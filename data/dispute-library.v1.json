@@ -17,7 +17,7 @@
         {
           "id": "online-shopping-01",
           "title": "Nichtlieferung",
-          "recommendation": "borderline",
+          "recommendation": "accept_if_verified",
           "suitability": "good_candidate_if_documented",
           "must": [
             "Konkreter bezifferbarer Zahlungsanspruch",
@@ -53,12 +53,15 @@
           "success_rate": null,
           "decision_template": "Wir können diesen Fall derzeit nicht übernehmen, weil die erforderlichen Nachweise oder Voraussetzungen noch geprüft werden müssen. Eine individuelle rechtliche Beratung kann sinnvoll sein.",
           "referral_requires_opt_in": true,
-          "review_status": "DRAFT_NOT_LEGALLY_APPROVED"
+          "review_status": "DRAFT_NOT_LEGALLY_APPROVED",
+          "acceptance_rule": "Only after all must criteria and documents are verified, no material objections, and human authorization",
+          "reject_rule": "Reject only when essential conditions are disproven or scope is excluded; otherwise request evidence or human review",
+          "deadline_note": "Check individual limitation periods and statutory deadlines against primary sources"
         },
         {
           "id": "online-shopping-02",
           "title": "Retoure ohne Erstattung",
-          "recommendation": "borderline",
+          "recommendation": "accept_if_verified",
           "suitability": "good_candidate_if_documented",
           "must": [
             "Konkreter bezifferbarer Zahlungsanspruch",
@@ -94,12 +97,15 @@
           "success_rate": null,
           "decision_template": "Wir können diesen Fall derzeit nicht übernehmen, weil die erforderlichen Nachweise oder Voraussetzungen noch geprüft werden müssen. Eine individuelle rechtliche Beratung kann sinnvoll sein.",
           "referral_requires_opt_in": true,
-          "review_status": "DRAFT_NOT_LEGALLY_APPROVED"
+          "review_status": "DRAFT_NOT_LEGALLY_APPROVED",
+          "acceptance_rule": "Only after all must criteria and documents are verified, no material objections, and human authorization",
+          "reject_rule": "Reject only when essential conditions are disproven or scope is excluded; otherwise request evidence or human review",
+          "deadline_note": "Check individual limitation periods and statutory deadlines against primary sources"
         },
         {
           "id": "online-shopping-03",
           "title": "Doppelte Abbuchung",
-          "recommendation": "borderline",
+          "recommendation": "accept_if_verified",
           "suitability": "good_candidate_if_documented",
           "must": [
             "Konkreter bezifferbarer Zahlungsanspruch",
@@ -135,12 +141,15 @@
           "success_rate": null,
           "decision_template": "Wir können diesen Fall derzeit nicht übernehmen, weil die erforderlichen Nachweise oder Voraussetzungen noch geprüft werden müssen. Eine individuelle rechtliche Beratung kann sinnvoll sein.",
           "referral_requires_opt_in": true,
-          "review_status": "DRAFT_NOT_LEGALLY_APPROVED"
+          "review_status": "DRAFT_NOT_LEGALLY_APPROVED",
+          "acceptance_rule": "Only after all must criteria and documents are verified, no material objections, and human authorization",
+          "reject_rule": "Reject only when essential conditions are disproven or scope is excluded; otherwise request evidence or human review",
+          "deadline_note": "Check individual limitation periods and statutory deadlines against primary sources"
         },
         {
           "id": "online-shopping-04",
           "title": "Widerruf ohne Erstattung",
-          "recommendation": "borderline",
+          "recommendation": "accept_if_verified",
           "suitability": "good_candidate_if_documented",
           "must": [
             "Konkreter bezifferbarer Zahlungsanspruch",
@@ -176,12 +185,15 @@
           "success_rate": null,
           "decision_template": "Wir können diesen Fall derzeit nicht übernehmen, weil die erforderlichen Nachweise oder Voraussetzungen noch geprüft werden müssen. Eine individuelle rechtliche Beratung kann sinnvoll sein.",
           "referral_requires_opt_in": true,
-          "review_status": "DRAFT_NOT_LEGALLY_APPROVED"
+          "review_status": "DRAFT_NOT_LEGALLY_APPROVED",
+          "acceptance_rule": "Only after all must criteria and documents are verified, no material objections, and human authorization",
+          "reject_rule": "Reject only when essential conditions are disproven or scope is excluded; otherwise request evidence or human review",
+          "deadline_note": "Check individual limitation periods and statutory deadlines against primary sources"
         },
         {
           "id": "online-shopping-05",
           "title": "Falsche Lieferung mit Erstattungszusage",
-          "recommendation": "borderline",
+          "recommendation": "accept_if_verified",
           "suitability": "good_candidate_if_documented",
           "must": [
             "Konkreter bezifferbarer Zahlungsanspruch",
@@ -217,12 +229,15 @@
           "success_rate": null,
           "decision_template": "Wir können diesen Fall derzeit nicht übernehmen, weil die erforderlichen Nachweise oder Voraussetzungen noch geprüft werden müssen. Eine individuelle rechtliche Beratung kann sinnvoll sein.",
           "referral_requires_opt_in": true,
-          "review_status": "DRAFT_NOT_LEGALLY_APPROVED"
+          "review_status": "DRAFT_NOT_LEGALLY_APPROVED",
+          "acceptance_rule": "Only after all must criteria and documents are verified, no material objections, and human authorization",
+          "reject_rule": "Reject only when essential conditions are disproven or scope is excluded; otherwise request evidence or human review",
+          "deadline_note": "Check individual limitation periods and statutory deadlines against primary sources"
         },
         {
           "id": "online-shopping-06",
           "title": "Gutschein-Guthaben",
-          "recommendation": "borderline",
+          "recommendation": "accept_if_verified",
           "suitability": "good_candidate_if_documented",
           "must": [
             "Konkreter bezifferbarer Zahlungsanspruch",
@@ -258,7 +273,10 @@
           "success_rate": null,
           "decision_template": "Wir können diesen Fall derzeit nicht übernehmen, weil die erforderlichen Nachweise oder Voraussetzungen noch geprüft werden müssen. Eine individuelle rechtliche Beratung kann sinnvoll sein.",
           "referral_requires_opt_in": true,
-          "review_status": "DRAFT_NOT_LEGALLY_APPROVED"
+          "review_status": "DRAFT_NOT_LEGALLY_APPROVED",
+          "acceptance_rule": "Only after all must criteria and documents are verified, no material objections, and human authorization",
+          "reject_rule": "Reject only when essential conditions are disproven or scope is excluded; otherwise request evidence or human review",
+          "deadline_note": "Check individual limitation periods and statutory deadlines against primary sources"
         },
         {
           "id": "online-shopping-07",
@@ -299,7 +317,10 @@
           "success_rate": null,
           "decision_template": "Wir können diesen Fall derzeit nicht übernehmen, weil die erforderlichen Nachweise oder Voraussetzungen noch geprüft werden müssen. Eine individuelle rechtliche Beratung kann sinnvoll sein.",
           "referral_requires_opt_in": true,
-          "review_status": "DRAFT_NOT_LEGALLY_APPROVED"
+          "review_status": "DRAFT_NOT_LEGALLY_APPROVED",
+          "acceptance_rule": "Only after all must criteria and documents are verified, no material objections, and human authorization",
+          "reject_rule": "Reject only when essential conditions are disproven or scope is excluded; otherwise request evidence or human review",
+          "deadline_note": "Check individual limitation periods and statutory deadlines against primary sources"
         },
         {
           "id": "online-shopping-08",
@@ -340,7 +361,10 @@
           "success_rate": null,
           "decision_template": "Wir können diesen Fall derzeit nicht übernehmen, weil die erforderlichen Nachweise oder Voraussetzungen noch geprüft werden müssen. Eine individuelle rechtliche Beratung kann sinnvoll sein.",
           "referral_requires_opt_in": true,
-          "review_status": "DRAFT_NOT_LEGALLY_APPROVED"
+          "review_status": "DRAFT_NOT_LEGALLY_APPROVED",
+          "acceptance_rule": "Only after all must criteria and documents are verified, no material objections, and human authorization",
+          "reject_rule": "Reject only when essential conditions are disproven or scope is excluded; otherwise request evidence or human review",
+          "deadline_note": "Check individual limitation periods and statutory deadlines against primary sources"
         },
         {
           "id": "online-shopping-09",
@@ -381,7 +405,10 @@
           "success_rate": null,
           "decision_template": "Wir können diesen Fall derzeit nicht übernehmen, weil die erforderlichen Nachweise oder Voraussetzungen noch geprüft werden müssen. Eine individuelle rechtliche Beratung kann sinnvoll sein.",
           "referral_requires_opt_in": true,
-          "review_status": "DRAFT_NOT_LEGALLY_APPROVED"
+          "review_status": "DRAFT_NOT_LEGALLY_APPROVED",
+          "acceptance_rule": "Only after all must criteria and documents are verified, no material objections, and human authorization",
+          "reject_rule": "Reject only when essential conditions are disproven or scope is excluded; otherwise request evidence or human review",
+          "deadline_note": "Check individual limitation periods and statutory deadlines against primary sources"
         }
       ]
     },
@@ -398,7 +425,7 @@
         {
           "id": "abos-vertraege-01",
           "title": "Abbuchung nach Kündigung",
-          "recommendation": "borderline",
+          "recommendation": "accept_if_verified",
           "suitability": "good_candidate_if_documented",
           "must": [
             "Konkreter bezifferbarer Zahlungsanspruch",
@@ -434,12 +461,15 @@
           "success_rate": null,
           "decision_template": "Wir können diesen Fall derzeit nicht übernehmen, weil die erforderlichen Nachweise oder Voraussetzungen noch geprüft werden müssen. Eine individuelle rechtliche Beratung kann sinnvoll sein.",
           "referral_requires_opt_in": true,
-          "review_status": "DRAFT_NOT_LEGALLY_APPROVED"
+          "review_status": "DRAFT_NOT_LEGALLY_APPROVED",
+          "acceptance_rule": "Only after all must criteria and documents are verified, no material objections, and human authorization",
+          "reject_rule": "Reject only when essential conditions are disproven or scope is excluded; otherwise request evidence or human review",
+          "deadline_note": "Check individual limitation periods and statutory deadlines against primary sources"
         },
         {
           "id": "abos-vertraege-02",
           "title": "Untergeschobenes Abo",
-          "recommendation": "borderline",
+          "recommendation": "accept_if_verified",
           "suitability": "good_candidate_if_documented",
           "must": [
             "Konkreter bezifferbarer Zahlungsanspruch",
@@ -475,12 +505,15 @@
           "success_rate": null,
           "decision_template": "Wir können diesen Fall derzeit nicht übernehmen, weil die erforderlichen Nachweise oder Voraussetzungen noch geprüft werden müssen. Eine individuelle rechtliche Beratung kann sinnvoll sein.",
           "referral_requires_opt_in": true,
-          "review_status": "DRAFT_NOT_LEGALLY_APPROVED"
+          "review_status": "DRAFT_NOT_LEGALLY_APPROVED",
+          "acceptance_rule": "Only after all must criteria and documents are verified, no material objections, and human authorization",
+          "reject_rule": "Reject only when essential conditions are disproven or scope is excluded; otherwise request evidence or human review",
+          "deadline_note": "Check individual limitation periods and statutory deadlines against primary sources"
         },
         {
           "id": "abos-vertraege-03",
           "title": "Guthaben nach Kündigung",
-          "recommendation": "borderline",
+          "recommendation": "accept_if_verified",
           "suitability": "good_candidate_if_documented",
           "must": [
             "Konkreter bezifferbarer Zahlungsanspruch",
@@ -516,12 +549,15 @@
           "success_rate": null,
           "decision_template": "Wir können diesen Fall derzeit nicht übernehmen, weil die erforderlichen Nachweise oder Voraussetzungen noch geprüft werden müssen. Eine individuelle rechtliche Beratung kann sinnvoll sein.",
           "referral_requires_opt_in": true,
-          "review_status": "DRAFT_NOT_LEGALLY_APPROVED"
+          "review_status": "DRAFT_NOT_LEGALLY_APPROVED",
+          "acceptance_rule": "Only after all must criteria and documents are verified, no material objections, and human authorization",
+          "reject_rule": "Reject only when essential conditions are disproven or scope is excluded; otherwise request evidence or human review",
+          "deadline_note": "Check individual limitation periods and statutory deadlines against primary sources"
         },
         {
           "id": "abos-vertraege-04",
           "title": "Doppelte Abbuchung",
-          "recommendation": "borderline",
+          "recommendation": "accept_if_verified",
           "suitability": "good_candidate_if_documented",
           "must": [
             "Konkreter bezifferbarer Zahlungsanspruch",
@@ -557,12 +593,15 @@
           "success_rate": null,
           "decision_template": "Wir können diesen Fall derzeit nicht übernehmen, weil die erforderlichen Nachweise oder Voraussetzungen noch geprüft werden müssen. Eine individuelle rechtliche Beratung kann sinnvoll sein.",
           "referral_requires_opt_in": true,
-          "review_status": "DRAFT_NOT_LEGALLY_APPROVED"
+          "review_status": "DRAFT_NOT_LEGALLY_APPROVED",
+          "acceptance_rule": "Only after all must criteria and documents are verified, no material objections, and human authorization",
+          "reject_rule": "Reject only when essential conditions are disproven or scope is excluded; otherwise request evidence or human review",
+          "deadline_note": "Check individual limitation periods and statutory deadlines against primary sources"
         },
         {
           "id": "abos-vertraege-05",
           "title": "Kostenloser Test berechnet",
-          "recommendation": "borderline",
+          "recommendation": "accept_if_verified",
           "suitability": "good_candidate_if_documented",
           "must": [
             "Konkreter bezifferbarer Zahlungsanspruch",
@@ -598,12 +637,15 @@
           "success_rate": null,
           "decision_template": "Wir können diesen Fall derzeit nicht übernehmen, weil die erforderlichen Nachweise oder Voraussetzungen noch geprüft werden müssen. Eine individuelle rechtliche Beratung kann sinnvoll sein.",
           "referral_requires_opt_in": true,
-          "review_status": "DRAFT_NOT_LEGALLY_APPROVED"
+          "review_status": "DRAFT_NOT_LEGALLY_APPROVED",
+          "acceptance_rule": "Only after all must criteria and documents are verified, no material objections, and human authorization",
+          "reject_rule": "Reject only when essential conditions are disproven or scope is excluded; otherwise request evidence or human review",
+          "deadline_note": "Check individual limitation periods and statutory deadlines against primary sources"
         },
         {
           "id": "abos-vertraege-06",
           "title": "Unwirksame Verlängerung",
-          "recommendation": "borderline",
+          "recommendation": "accept_if_verified",
           "suitability": "good_candidate_if_documented",
           "must": [
             "Konkreter bezifferbarer Zahlungsanspruch",
@@ -639,7 +681,10 @@
           "success_rate": null,
           "decision_template": "Wir können diesen Fall derzeit nicht übernehmen, weil die erforderlichen Nachweise oder Voraussetzungen noch geprüft werden müssen. Eine individuelle rechtliche Beratung kann sinnvoll sein.",
           "referral_requires_opt_in": true,
-          "review_status": "DRAFT_NOT_LEGALLY_APPROVED"
+          "review_status": "DRAFT_NOT_LEGALLY_APPROVED",
+          "acceptance_rule": "Only after all must criteria and documents are verified, no material objections, and human authorization",
+          "reject_rule": "Reject only when essential conditions are disproven or scope is excluded; otherwise request evidence or human review",
+          "deadline_note": "Check individual limitation periods and statutory deadlines against primary sources"
         },
         {
           "id": "abos-vertraege-07",
@@ -680,7 +725,10 @@
           "success_rate": null,
           "decision_template": "Wir können diesen Fall derzeit nicht übernehmen, weil die erforderlichen Nachweise oder Voraussetzungen noch geprüft werden müssen. Eine individuelle rechtliche Beratung kann sinnvoll sein.",
           "referral_requires_opt_in": true,
-          "review_status": "DRAFT_NOT_LEGALLY_APPROVED"
+          "review_status": "DRAFT_NOT_LEGALLY_APPROVED",
+          "acceptance_rule": "Only after all must criteria and documents are verified, no material objections, and human authorization",
+          "reject_rule": "Reject only when essential conditions are disproven or scope is excluded; otherwise request evidence or human review",
+          "deadline_note": "Check individual limitation periods and statutory deadlines against primary sources"
         },
         {
           "id": "abos-vertraege-08",
@@ -721,7 +769,10 @@
           "success_rate": null,
           "decision_template": "Wir können diesen Fall derzeit nicht übernehmen, weil die erforderlichen Nachweise oder Voraussetzungen noch geprüft werden müssen. Eine individuelle rechtliche Beratung kann sinnvoll sein.",
           "referral_requires_opt_in": true,
-          "review_status": "DRAFT_NOT_LEGALLY_APPROVED"
+          "review_status": "DRAFT_NOT_LEGALLY_APPROVED",
+          "acceptance_rule": "Only after all must criteria and documents are verified, no material objections, and human authorization",
+          "reject_rule": "Reject only when essential conditions are disproven or scope is excluded; otherwise request evidence or human review",
+          "deadline_note": "Check individual limitation periods and statutory deadlines against primary sources"
         },
         {
           "id": "abos-vertraege-09",
@@ -762,7 +813,10 @@
           "success_rate": null,
           "decision_template": "Wir können diesen Fall derzeit nicht übernehmen, weil die erforderlichen Nachweise oder Voraussetzungen noch geprüft werden müssen. Eine individuelle rechtliche Beratung kann sinnvoll sein.",
           "referral_requires_opt_in": true,
-          "review_status": "DRAFT_NOT_LEGALLY_APPROVED"
+          "review_status": "DRAFT_NOT_LEGALLY_APPROVED",
+          "acceptance_rule": "Only after all must criteria and documents are verified, no material objections, and human authorization",
+          "reject_rule": "Reject only when essential conditions are disproven or scope is excluded; otherwise request evidence or human review",
+          "deadline_note": "Check individual limitation periods and statutory deadlines against primary sources"
         }
       ]
     },
@@ -779,7 +833,7 @@
         {
           "id": "internet-mobilfunk-01",
           "title": "Guthaben nach Vertragsende",
-          "recommendation": "borderline",
+          "recommendation": "accept_if_verified",
           "suitability": "good_candidate_if_documented",
           "must": [
             "Konkreter bezifferbarer Zahlungsanspruch",
@@ -815,12 +869,15 @@
           "success_rate": null,
           "decision_template": "Wir können diesen Fall derzeit nicht übernehmen, weil die erforderlichen Nachweise oder Voraussetzungen noch geprüft werden müssen. Eine individuelle rechtliche Beratung kann sinnvoll sein.",
           "referral_requires_opt_in": true,
-          "review_status": "DRAFT_NOT_LEGALLY_APPROVED"
+          "review_status": "DRAFT_NOT_LEGALLY_APPROVED",
+          "acceptance_rule": "Only after all must criteria and documents are verified, no material objections, and human authorization",
+          "reject_rule": "Reject only when essential conditions are disproven or scope is excluded; otherwise request evidence or human review",
+          "deadline_note": "Check individual limitation periods and statutory deadlines against primary sources"
         },
         {
           "id": "internet-mobilfunk-02",
           "title": "Doppelte Abbuchung",
-          "recommendation": "borderline",
+          "recommendation": "accept_if_verified",
           "suitability": "good_candidate_if_documented",
           "must": [
             "Konkreter bezifferbarer Zahlungsanspruch",
@@ -856,12 +913,15 @@
           "success_rate": null,
           "decision_template": "Wir können diesen Fall derzeit nicht übernehmen, weil die erforderlichen Nachweise oder Voraussetzungen noch geprüft werden müssen. Eine individuelle rechtliche Beratung kann sinnvoll sein.",
           "referral_requires_opt_in": true,
-          "review_status": "DRAFT_NOT_LEGALLY_APPROVED"
+          "review_status": "DRAFT_NOT_LEGALLY_APPROVED",
+          "acceptance_rule": "Only after all must criteria and documents are verified, no material objections, and human authorization",
+          "reject_rule": "Reject only when essential conditions are disproven or scope is excluded; otherwise request evidence or human review",
+          "deadline_note": "Check individual limitation periods and statutory deadlines against primary sources"
         },
         {
           "id": "internet-mobilfunk-03",
           "title": "Nicht bestellte Option",
-          "recommendation": "borderline",
+          "recommendation": "accept_if_verified",
           "suitability": "good_candidate_if_documented",
           "must": [
             "Konkreter bezifferbarer Zahlungsanspruch",
@@ -897,12 +957,15 @@
           "success_rate": null,
           "decision_template": "Wir können diesen Fall derzeit nicht übernehmen, weil die erforderlichen Nachweise oder Voraussetzungen noch geprüft werden müssen. Eine individuelle rechtliche Beratung kann sinnvoll sein.",
           "referral_requires_opt_in": true,
-          "review_status": "DRAFT_NOT_LEGALLY_APPROVED"
+          "review_status": "DRAFT_NOT_LEGALLY_APPROVED",
+          "acceptance_rule": "Only after all must criteria and documents are verified, no material objections, and human authorization",
+          "reject_rule": "Reject only when essential conditions are disproven or scope is excluded; otherwise request evidence or human review",
+          "deadline_note": "Check individual limitation periods and statutory deadlines against primary sources"
         },
         {
           "id": "internet-mobilfunk-04",
           "title": "Verlängerung trotz Kündigung",
-          "recommendation": "borderline",
+          "recommendation": "accept_if_verified",
           "suitability": "good_candidate_if_documented",
           "must": [
             "Konkreter bezifferbarer Zahlungsanspruch",
@@ -938,12 +1001,15 @@
           "success_rate": null,
           "decision_template": "Wir können diesen Fall derzeit nicht übernehmen, weil die erforderlichen Nachweise oder Voraussetzungen noch geprüft werden müssen. Eine individuelle rechtliche Beratung kann sinnvoll sein.",
           "referral_requires_opt_in": true,
-          "review_status": "DRAFT_NOT_LEGALLY_APPROVED"
+          "review_status": "DRAFT_NOT_LEGALLY_APPROVED",
+          "acceptance_rule": "Only after all must criteria and documents are verified, no material objections, and human authorization",
+          "reject_rule": "Reject only when essential conditions are disproven or scope is excluded; otherwise request evidence or human review",
+          "deadline_note": "Check individual limitation periods and statutory deadlines against primary sources"
         },
         {
           "id": "internet-mobilfunk-05",
           "title": "Roaming-Abrechnung",
-          "recommendation": "borderline",
+          "recommendation": "accept_if_verified",
           "suitability": "good_candidate_if_documented",
           "must": [
             "Konkreter bezifferbarer Zahlungsanspruch",
@@ -979,12 +1045,15 @@
           "success_rate": null,
           "decision_template": "Wir können diesen Fall derzeit nicht übernehmen, weil die erforderlichen Nachweise oder Voraussetzungen noch geprüft werden müssen. Eine individuelle rechtliche Beratung kann sinnvoll sein.",
           "referral_requires_opt_in": true,
-          "review_status": "DRAFT_NOT_LEGALLY_APPROVED"
+          "review_status": "DRAFT_NOT_LEGALLY_APPROVED",
+          "acceptance_rule": "Only after all must criteria and documents are verified, no material objections, and human authorization",
+          "reject_rule": "Reject only when essential conditions are disproven or scope is excluded; otherwise request evidence or human review",
+          "deadline_note": "Check individual limitation periods and statutory deadlines against primary sources"
         },
         {
           "id": "internet-mobilfunk-06",
           "title": "Falsche Schlussrechnung",
-          "recommendation": "borderline",
+          "recommendation": "accept_if_verified",
           "suitability": "good_candidate_if_documented",
           "must": [
             "Konkreter bezifferbarer Zahlungsanspruch",
@@ -1020,7 +1089,10 @@
           "success_rate": null,
           "decision_template": "Wir können diesen Fall derzeit nicht übernehmen, weil die erforderlichen Nachweise oder Voraussetzungen noch geprüft werden müssen. Eine individuelle rechtliche Beratung kann sinnvoll sein.",
           "referral_requires_opt_in": true,
-          "review_status": "DRAFT_NOT_LEGALLY_APPROVED"
+          "review_status": "DRAFT_NOT_LEGALLY_APPROVED",
+          "acceptance_rule": "Only after all must criteria and documents are verified, no material objections, and human authorization",
+          "reject_rule": "Reject only when essential conditions are disproven or scope is excluded; otherwise request evidence or human review",
+          "deadline_note": "Check individual limitation periods and statutory deadlines against primary sources"
         },
         {
           "id": "internet-mobilfunk-07",
@@ -1061,7 +1133,10 @@
           "success_rate": null,
           "decision_template": "Wir können diesen Fall derzeit nicht übernehmen, weil die erforderlichen Nachweise oder Voraussetzungen noch geprüft werden müssen. Eine individuelle rechtliche Beratung kann sinnvoll sein.",
           "referral_requires_opt_in": true,
-          "review_status": "DRAFT_NOT_LEGALLY_APPROVED"
+          "review_status": "DRAFT_NOT_LEGALLY_APPROVED",
+          "acceptance_rule": "Only after all must criteria and documents are verified, no material objections, and human authorization",
+          "reject_rule": "Reject only when essential conditions are disproven or scope is excluded; otherwise request evidence or human review",
+          "deadline_note": "Check individual limitation periods and statutory deadlines against primary sources"
         },
         {
           "id": "internet-mobilfunk-08",
@@ -1102,7 +1177,10 @@
           "success_rate": null,
           "decision_template": "Wir können diesen Fall derzeit nicht übernehmen, weil die erforderlichen Nachweise oder Voraussetzungen noch geprüft werden müssen. Eine individuelle rechtliche Beratung kann sinnvoll sein.",
           "referral_requires_opt_in": true,
-          "review_status": "DRAFT_NOT_LEGALLY_APPROVED"
+          "review_status": "DRAFT_NOT_LEGALLY_APPROVED",
+          "acceptance_rule": "Only after all must criteria and documents are verified, no material objections, and human authorization",
+          "reject_rule": "Reject only when essential conditions are disproven or scope is excluded; otherwise request evidence or human review",
+          "deadline_note": "Check individual limitation periods and statutory deadlines against primary sources"
         },
         {
           "id": "internet-mobilfunk-09",
@@ -1143,7 +1221,10 @@
           "success_rate": null,
           "decision_template": "Wir können diesen Fall derzeit nicht übernehmen, weil die erforderlichen Nachweise oder Voraussetzungen noch geprüft werden müssen. Eine individuelle rechtliche Beratung kann sinnvoll sein.",
           "referral_requires_opt_in": true,
-          "review_status": "DRAFT_NOT_LEGALLY_APPROVED"
+          "review_status": "DRAFT_NOT_LEGALLY_APPROVED",
+          "acceptance_rule": "Only after all must criteria and documents are verified, no material objections, and human authorization",
+          "reject_rule": "Reject only when essential conditions are disproven or scope is excluded; otherwise request evidence or human review",
+          "deadline_note": "Check individual limitation periods and statutory deadlines against primary sources"
         }
       ]
     },
@@ -1160,7 +1241,7 @@
         {
           "id": "strom-energie-01",
           "title": "Jahresguthaben nicht ausgezahlt",
-          "recommendation": "borderline",
+          "recommendation": "accept_if_verified",
           "suitability": "good_candidate_if_documented",
           "must": [
             "Konkreter bezifferbarer Zahlungsanspruch",
@@ -1196,12 +1277,15 @@
           "success_rate": null,
           "decision_template": "Wir können diesen Fall derzeit nicht übernehmen, weil die erforderlichen Nachweise oder Voraussetzungen noch geprüft werden müssen. Eine individuelle rechtliche Beratung kann sinnvoll sein.",
           "referral_requires_opt_in": true,
-          "review_status": "DRAFT_NOT_LEGALLY_APPROVED"
+          "review_status": "DRAFT_NOT_LEGALLY_APPROVED",
+          "acceptance_rule": "Only after all must criteria and documents are verified, no material objections, and human authorization",
+          "reject_rule": "Reject only when essential conditions are disproven or scope is excluded; otherwise request evidence or human review",
+          "deadline_note": "Check individual limitation periods and statutory deadlines against primary sources"
         },
         {
           "id": "strom-energie-02",
           "title": "Guthaben nach Wechsel",
-          "recommendation": "borderline",
+          "recommendation": "accept_if_verified",
           "suitability": "good_candidate_if_documented",
           "must": [
             "Konkreter bezifferbarer Zahlungsanspruch",
@@ -1237,12 +1321,15 @@
           "success_rate": null,
           "decision_template": "Wir können diesen Fall derzeit nicht übernehmen, weil die erforderlichen Nachweise oder Voraussetzungen noch geprüft werden müssen. Eine individuelle rechtliche Beratung kann sinnvoll sein.",
           "referral_requires_opt_in": true,
-          "review_status": "DRAFT_NOT_LEGALLY_APPROVED"
+          "review_status": "DRAFT_NOT_LEGALLY_APPROVED",
+          "acceptance_rule": "Only after all must criteria and documents are verified, no material objections, and human authorization",
+          "reject_rule": "Reject only when essential conditions are disproven or scope is excluded; otherwise request evidence or human review",
+          "deadline_note": "Check individual limitation periods and statutory deadlines against primary sources"
         },
         {
           "id": "strom-energie-03",
           "title": "Doppelte Lieferantenabrechnung",
-          "recommendation": "borderline",
+          "recommendation": "accept_if_verified",
           "suitability": "good_candidate_if_documented",
           "must": [
             "Konkreter bezifferbarer Zahlungsanspruch",
@@ -1278,12 +1365,15 @@
           "success_rate": null,
           "decision_template": "Wir können diesen Fall derzeit nicht übernehmen, weil die erforderlichen Nachweise oder Voraussetzungen noch geprüft werden müssen. Eine individuelle rechtliche Beratung kann sinnvoll sein.",
           "referral_requires_opt_in": true,
-          "review_status": "DRAFT_NOT_LEGALLY_APPROVED"
+          "review_status": "DRAFT_NOT_LEGALLY_APPROVED",
+          "acceptance_rule": "Only after all must criteria and documents are verified, no material objections, and human authorization",
+          "reject_rule": "Reject only when essential conditions are disproven or scope is excluded; otherwise request evidence or human review",
+          "deadline_note": "Check individual limitation periods and statutory deadlines against primary sources"
         },
         {
           "id": "strom-energie-04",
           "title": "Zugesagte Erstattung",
-          "recommendation": "borderline",
+          "recommendation": "accept_if_verified",
           "suitability": "good_candidate_if_documented",
           "must": [
             "Konkreter bezifferbarer Zahlungsanspruch",
@@ -1319,12 +1409,15 @@
           "success_rate": null,
           "decision_template": "Wir können diesen Fall derzeit nicht übernehmen, weil die erforderlichen Nachweise oder Voraussetzungen noch geprüft werden müssen. Eine individuelle rechtliche Beratung kann sinnvoll sein.",
           "referral_requires_opt_in": true,
-          "review_status": "DRAFT_NOT_LEGALLY_APPROVED"
+          "review_status": "DRAFT_NOT_LEGALLY_APPROVED",
+          "acceptance_rule": "Only after all must criteria and documents are verified, no material objections, and human authorization",
+          "reject_rule": "Reject only when essential conditions are disproven or scope is excluded; otherwise request evidence or human review",
+          "deadline_note": "Check individual limitation periods and statutory deadlines against primary sources"
         },
         {
           "id": "strom-energie-05",
           "title": "Widerruf Haustürgeschäft",
-          "recommendation": "borderline",
+          "recommendation": "accept_if_verified",
           "suitability": "good_candidate_if_documented",
           "must": [
             "Konkreter bezifferbarer Zahlungsanspruch",
@@ -1360,12 +1453,15 @@
           "success_rate": null,
           "decision_template": "Wir können diesen Fall derzeit nicht übernehmen, weil die erforderlichen Nachweise oder Voraussetzungen noch geprüft werden müssen. Eine individuelle rechtliche Beratung kann sinnvoll sein.",
           "referral_requires_opt_in": true,
-          "review_status": "DRAFT_NOT_LEGALLY_APPROVED"
+          "review_status": "DRAFT_NOT_LEGALLY_APPROVED",
+          "acceptance_rule": "Only after all must criteria and documents are verified, no material objections, and human authorization",
+          "reject_rule": "Reject only when essential conditions are disproven or scope is excluded; otherwise request evidence or human review",
+          "deadline_note": "Check individual limitation periods and statutory deadlines against primary sources"
         },
         {
           "id": "strom-energie-06",
           "title": "Falscher Abschlag",
-          "recommendation": "borderline",
+          "recommendation": "accept_if_verified",
           "suitability": "good_candidate_if_documented",
           "must": [
             "Konkreter bezifferbarer Zahlungsanspruch",
@@ -1401,7 +1497,10 @@
           "success_rate": null,
           "decision_template": "Wir können diesen Fall derzeit nicht übernehmen, weil die erforderlichen Nachweise oder Voraussetzungen noch geprüft werden müssen. Eine individuelle rechtliche Beratung kann sinnvoll sein.",
           "referral_requires_opt_in": true,
-          "review_status": "DRAFT_NOT_LEGALLY_APPROVED"
+          "review_status": "DRAFT_NOT_LEGALLY_APPROVED",
+          "acceptance_rule": "Only after all must criteria and documents are verified, no material objections, and human authorization",
+          "reject_rule": "Reject only when essential conditions are disproven or scope is excluded; otherwise request evidence or human review",
+          "deadline_note": "Check individual limitation periods and statutory deadlines against primary sources"
         },
         {
           "id": "strom-energie-07",
@@ -1442,7 +1541,10 @@
           "success_rate": null,
           "decision_template": "Wir können diesen Fall derzeit nicht übernehmen, weil die erforderlichen Nachweise oder Voraussetzungen noch geprüft werden müssen. Eine individuelle rechtliche Beratung kann sinnvoll sein.",
           "referral_requires_opt_in": true,
-          "review_status": "DRAFT_NOT_LEGALLY_APPROVED"
+          "review_status": "DRAFT_NOT_LEGALLY_APPROVED",
+          "acceptance_rule": "Only after all must criteria and documents are verified, no material objections, and human authorization",
+          "reject_rule": "Reject only when essential conditions are disproven or scope is excluded; otherwise request evidence or human review",
+          "deadline_note": "Check individual limitation periods and statutory deadlines against primary sources"
         },
         {
           "id": "strom-energie-08",
@@ -1483,7 +1585,10 @@
           "success_rate": null,
           "decision_template": "Wir können diesen Fall derzeit nicht übernehmen, weil die erforderlichen Nachweise oder Voraussetzungen noch geprüft werden müssen. Eine individuelle rechtliche Beratung kann sinnvoll sein.",
           "referral_requires_opt_in": true,
-          "review_status": "DRAFT_NOT_LEGALLY_APPROVED"
+          "review_status": "DRAFT_NOT_LEGALLY_APPROVED",
+          "acceptance_rule": "Only after all must criteria and documents are verified, no material objections, and human authorization",
+          "reject_rule": "Reject only when essential conditions are disproven or scope is excluded; otherwise request evidence or human review",
+          "deadline_note": "Check individual limitation periods and statutory deadlines against primary sources"
         },
         {
           "id": "strom-energie-09",
@@ -1524,7 +1629,10 @@
           "success_rate": null,
           "decision_template": "Wir können diesen Fall derzeit nicht übernehmen, weil die erforderlichen Nachweise oder Voraussetzungen noch geprüft werden müssen. Eine individuelle rechtliche Beratung kann sinnvoll sein.",
           "referral_requires_opt_in": true,
-          "review_status": "DRAFT_NOT_LEGALLY_APPROVED"
+          "review_status": "DRAFT_NOT_LEGALLY_APPROVED",
+          "acceptance_rule": "Only after all must criteria and documents are verified, no material objections, and human authorization",
+          "reject_rule": "Reject only when essential conditions are disproven or scope is excluded; otherwise request evidence or human review",
+          "deadline_note": "Check individual limitation periods and statutory deadlines against primary sources"
         }
       ]
     },
@@ -1541,7 +1649,7 @@
         {
           "id": "miete-wohnen-01",
           "title": "Kaution nicht zurück",
-          "recommendation": "borderline",
+          "recommendation": "accept_if_verified",
           "suitability": "good_candidate_if_documented",
           "must": [
             "Konkreter bezifferbarer Zahlungsanspruch",
@@ -1577,12 +1685,15 @@
           "success_rate": null,
           "decision_template": "Wir können diesen Fall derzeit nicht übernehmen, weil die erforderlichen Nachweise oder Voraussetzungen noch geprüft werden müssen. Eine individuelle rechtliche Beratung kann sinnvoll sein.",
           "referral_requires_opt_in": true,
-          "review_status": "DRAFT_NOT_LEGALLY_APPROVED"
+          "review_status": "DRAFT_NOT_LEGALLY_APPROVED",
+          "acceptance_rule": "Only after all must criteria and documents are verified, no material objections, and human authorization",
+          "reject_rule": "Reject only when essential conditions are disproven or scope is excluded; otherwise request evidence or human review",
+          "deadline_note": "Check individual limitation periods and statutory deadlines against primary sources"
         },
         {
           "id": "miete-wohnen-02",
           "title": "Unstreitiger Kautionsteil",
-          "recommendation": "borderline",
+          "recommendation": "accept_if_verified",
           "suitability": "good_candidate_if_documented",
           "must": [
             "Konkreter bezifferbarer Zahlungsanspruch",
@@ -1618,12 +1729,15 @@
           "success_rate": null,
           "decision_template": "Wir können diesen Fall derzeit nicht übernehmen, weil die erforderlichen Nachweise oder Voraussetzungen noch geprüft werden müssen. Eine individuelle rechtliche Beratung kann sinnvoll sein.",
           "referral_requires_opt_in": true,
-          "review_status": "DRAFT_NOT_LEGALLY_APPROVED"
+          "review_status": "DRAFT_NOT_LEGALLY_APPROVED",
+          "acceptance_rule": "Only after all must criteria and documents are verified, no material objections, and human authorization",
+          "reject_rule": "Reject only when essential conditions are disproven or scope is excluded; otherwise request evidence or human review",
+          "deadline_note": "Check individual limitation periods and statutory deadlines against primary sources"
         },
         {
           "id": "miete-wohnen-03",
           "title": "Bestätigtes Nebenkostenguthaben",
-          "recommendation": "borderline",
+          "recommendation": "accept_if_verified",
           "suitability": "good_candidate_if_documented",
           "must": [
             "Konkreter bezifferbarer Zahlungsanspruch",
@@ -1659,12 +1773,15 @@
           "success_rate": null,
           "decision_template": "Wir können diesen Fall derzeit nicht übernehmen, weil die erforderlichen Nachweise oder Voraussetzungen noch geprüft werden müssen. Eine individuelle rechtliche Beratung kann sinnvoll sein.",
           "referral_requires_opt_in": true,
-          "review_status": "DRAFT_NOT_LEGALLY_APPROVED"
+          "review_status": "DRAFT_NOT_LEGALLY_APPROVED",
+          "acceptance_rule": "Only after all must criteria and documents are verified, no material objections, and human authorization",
+          "reject_rule": "Reject only when essential conditions are disproven or scope is excluded; otherwise request evidence or human review",
+          "deadline_note": "Check individual limitation periods and statutory deadlines against primary sources"
         },
         {
           "id": "miete-wohnen-04",
           "title": "Doppelte Mietzahlung",
-          "recommendation": "borderline",
+          "recommendation": "accept_if_verified",
           "suitability": "good_candidate_if_documented",
           "must": [
             "Konkreter bezifferbarer Zahlungsanspruch",
@@ -1700,12 +1817,15 @@
           "success_rate": null,
           "decision_template": "Wir können diesen Fall derzeit nicht übernehmen, weil die erforderlichen Nachweise oder Voraussetzungen noch geprüft werden müssen. Eine individuelle rechtliche Beratung kann sinnvoll sein.",
           "referral_requires_opt_in": true,
-          "review_status": "DRAFT_NOT_LEGALLY_APPROVED"
+          "review_status": "DRAFT_NOT_LEGALLY_APPROVED",
+          "acceptance_rule": "Only after all must criteria and documents are verified, no material objections, and human authorization",
+          "reject_rule": "Reject only when essential conditions are disproven or scope is excluded; otherwise request evidence or human review",
+          "deadline_note": "Check individual limitation periods and statutory deadlines against primary sources"
         },
         {
           "id": "miete-wohnen-05",
           "title": "Falsche Mietabbuchung",
-          "recommendation": "borderline",
+          "recommendation": "accept_if_verified",
           "suitability": "good_candidate_if_documented",
           "must": [
             "Konkreter bezifferbarer Zahlungsanspruch",
@@ -1741,12 +1861,15 @@
           "success_rate": null,
           "decision_template": "Wir können diesen Fall derzeit nicht übernehmen, weil die erforderlichen Nachweise oder Voraussetzungen noch geprüft werden müssen. Eine individuelle rechtliche Beratung kann sinnvoll sein.",
           "referral_requires_opt_in": true,
-          "review_status": "DRAFT_NOT_LEGALLY_APPROVED"
+          "review_status": "DRAFT_NOT_LEGALLY_APPROVED",
+          "acceptance_rule": "Only after all must criteria and documents are verified, no material objections, and human authorization",
+          "reject_rule": "Reject only when essential conditions are disproven or scope is excluded; otherwise request evidence or human review",
+          "deadline_note": "Check individual limitation periods and statutory deadlines against primary sources"
         },
         {
           "id": "miete-wohnen-06",
           "title": "Zugesagte Rückzahlung",
-          "recommendation": "borderline",
+          "recommendation": "accept_if_verified",
           "suitability": "good_candidate_if_documented",
           "must": [
             "Konkreter bezifferbarer Zahlungsanspruch",
@@ -1782,7 +1905,10 @@
           "success_rate": null,
           "decision_template": "Wir können diesen Fall derzeit nicht übernehmen, weil die erforderlichen Nachweise oder Voraussetzungen noch geprüft werden müssen. Eine individuelle rechtliche Beratung kann sinnvoll sein.",
           "referral_requires_opt_in": true,
-          "review_status": "DRAFT_NOT_LEGALLY_APPROVED"
+          "review_status": "DRAFT_NOT_LEGALLY_APPROVED",
+          "acceptance_rule": "Only after all must criteria and documents are verified, no material objections, and human authorization",
+          "reject_rule": "Reject only when essential conditions are disproven or scope is excluded; otherwise request evidence or human review",
+          "deadline_note": "Check individual limitation periods and statutory deadlines against primary sources"
         },
         {
           "id": "miete-wohnen-07",
@@ -1823,7 +1949,10 @@
           "success_rate": null,
           "decision_template": "Wir können diesen Fall derzeit nicht übernehmen, weil die erforderlichen Nachweise oder Voraussetzungen noch geprüft werden müssen. Eine individuelle rechtliche Beratung kann sinnvoll sein.",
           "referral_requires_opt_in": true,
-          "review_status": "DRAFT_NOT_LEGALLY_APPROVED"
+          "review_status": "DRAFT_NOT_LEGALLY_APPROVED",
+          "acceptance_rule": "Only after all must criteria and documents are verified, no material objections, and human authorization",
+          "reject_rule": "Reject only when essential conditions are disproven or scope is excluded; otherwise request evidence or human review",
+          "deadline_note": "Check individual limitation periods and statutory deadlines against primary sources"
         },
         {
           "id": "miete-wohnen-08",
@@ -1864,7 +1993,10 @@
           "success_rate": null,
           "decision_template": "Wir können diesen Fall derzeit nicht übernehmen, weil die erforderlichen Nachweise oder Voraussetzungen noch geprüft werden müssen. Eine individuelle rechtliche Beratung kann sinnvoll sein.",
           "referral_requires_opt_in": true,
-          "review_status": "DRAFT_NOT_LEGALLY_APPROVED"
+          "review_status": "DRAFT_NOT_LEGALLY_APPROVED",
+          "acceptance_rule": "Only after all must criteria and documents are verified, no material objections, and human authorization",
+          "reject_rule": "Reject only when essential conditions are disproven or scope is excluded; otherwise request evidence or human review",
+          "deadline_note": "Check individual limitation periods and statutory deadlines against primary sources"
         },
         {
           "id": "miete-wohnen-09",
@@ -1905,7 +2037,10 @@
           "success_rate": null,
           "decision_template": "Wir können diesen Fall derzeit nicht übernehmen, weil die erforderlichen Nachweise oder Voraussetzungen noch geprüft werden müssen. Eine individuelle rechtliche Beratung kann sinnvoll sein.",
           "referral_requires_opt_in": true,
-          "review_status": "DRAFT_NOT_LEGALLY_APPROVED"
+          "review_status": "DRAFT_NOT_LEGALLY_APPROVED",
+          "acceptance_rule": "Only after all must criteria and documents are verified, no material objections, and human authorization",
+          "reject_rule": "Reject only when essential conditions are disproven or scope is excluded; otherwise request evidence or human review",
+          "deadline_note": "Check individual limitation periods and statutory deadlines against primary sources"
         }
       ]
     },
@@ -1922,7 +2057,7 @@
         {
           "id": "reisen-01",
           "title": "Ticketpreis nach Annullierung",
-          "recommendation": "borderline",
+          "recommendation": "accept_if_verified",
           "suitability": "good_candidate_if_documented",
           "must": [
             "Konkreter bezifferbarer Zahlungsanspruch",
@@ -1958,12 +2093,15 @@
           "success_rate": null,
           "decision_template": "Wir können diesen Fall derzeit nicht übernehmen, weil die erforderlichen Nachweise oder Voraussetzungen noch geprüft werden müssen. Eine individuelle rechtliche Beratung kann sinnvoll sein.",
           "referral_requires_opt_in": true,
-          "review_status": "DRAFT_NOT_LEGALLY_APPROVED"
+          "review_status": "DRAFT_NOT_LEGALLY_APPROVED",
+          "acceptance_rule": "Only after all must criteria and documents are verified, no material objections, and human authorization",
+          "reject_rule": "Reject only when essential conditions are disproven or scope is excluded; otherwise request evidence or human review",
+          "deadline_note": "Check individual limitation periods and statutory deadlines against primary sources"
         },
         {
           "id": "reisen-02",
           "title": "EU-Fluggastentschädigung",
-          "recommendation": "borderline",
+          "recommendation": "accept_if_verified",
           "suitability": "good_candidate_if_documented",
           "must": [
             "Konkreter bezifferbarer Zahlungsanspruch",
@@ -1999,12 +2137,15 @@
           "success_rate": null,
           "decision_template": "Wir können diesen Fall derzeit nicht übernehmen, weil die erforderlichen Nachweise oder Voraussetzungen noch geprüft werden müssen. Eine individuelle rechtliche Beratung kann sinnvoll sein.",
           "referral_requires_opt_in": true,
-          "review_status": "DRAFT_NOT_LEGALLY_APPROVED"
+          "review_status": "DRAFT_NOT_LEGALLY_APPROVED",
+          "acceptance_rule": "Only after all must criteria and documents are verified, no material objections, and human authorization",
+          "reject_rule": "Reject only when essential conditions are disproven or scope is excluded; otherwise request evidence or human review",
+          "deadline_note": "Check individual limitation periods and statutory deadlines against primary sources"
         },
         {
           "id": "reisen-03",
           "title": "Doppelte Abbuchung",
-          "recommendation": "borderline",
+          "recommendation": "accept_if_verified",
           "suitability": "good_candidate_if_documented",
           "must": [
             "Konkreter bezifferbarer Zahlungsanspruch",
@@ -2040,12 +2181,15 @@
           "success_rate": null,
           "decision_template": "Wir können diesen Fall derzeit nicht übernehmen, weil die erforderlichen Nachweise oder Voraussetzungen noch geprüft werden müssen. Eine individuelle rechtliche Beratung kann sinnvoll sein.",
           "referral_requires_opt_in": true,
-          "review_status": "DRAFT_NOT_LEGALLY_APPROVED"
+          "review_status": "DRAFT_NOT_LEGALLY_APPROVED",
+          "acceptance_rule": "Only after all must criteria and documents are verified, no material objections, and human authorization",
+          "reject_rule": "Reject only when essential conditions are disproven or scope is excluded; otherwise request evidence or human review",
+          "deadline_note": "Check individual limitation periods and statutory deadlines against primary sources"
         },
         {
           "id": "reisen-04",
           "title": "Nicht erbrachte Reiseleistung",
-          "recommendation": "borderline",
+          "recommendation": "accept_if_verified",
           "suitability": "good_candidate_if_documented",
           "must": [
             "Konkreter bezifferbarer Zahlungsanspruch",
@@ -2081,12 +2225,15 @@
           "success_rate": null,
           "decision_template": "Wir können diesen Fall derzeit nicht übernehmen, weil die erforderlichen Nachweise oder Voraussetzungen noch geprüft werden müssen. Eine individuelle rechtliche Beratung kann sinnvoll sein.",
           "referral_requires_opt_in": true,
-          "review_status": "DRAFT_NOT_LEGALLY_APPROVED"
+          "review_status": "DRAFT_NOT_LEGALLY_APPROVED",
+          "acceptance_rule": "Only after all must criteria and documents are verified, no material objections, and human authorization",
+          "reject_rule": "Reject only when essential conditions are disproven or scope is excluded; otherwise request evidence or human review",
+          "deadline_note": "Check individual limitation periods and statutory deadlines against primary sources"
         },
         {
           "id": "reisen-05",
           "title": "Bestätigte Rückzahlung",
-          "recommendation": "borderline",
+          "recommendation": "accept_if_verified",
           "suitability": "good_candidate_if_documented",
           "must": [
             "Konkreter bezifferbarer Zahlungsanspruch",
@@ -2122,12 +2269,15 @@
           "success_rate": null,
           "decision_template": "Wir können diesen Fall derzeit nicht übernehmen, weil die erforderlichen Nachweise oder Voraussetzungen noch geprüft werden müssen. Eine individuelle rechtliche Beratung kann sinnvoll sein.",
           "referral_requires_opt_in": true,
-          "review_status": "DRAFT_NOT_LEGALLY_APPROVED"
+          "review_status": "DRAFT_NOT_LEGALLY_APPROVED",
+          "acceptance_rule": "Only after all must criteria and documents are verified, no material objections, and human authorization",
+          "reject_rule": "Reject only when essential conditions are disproven or scope is excluded; otherwise request evidence or human review",
+          "deadline_note": "Check individual limitation periods and statutory deadlines against primary sources"
         },
         {
           "id": "reisen-06",
           "title": "Bahnfahrgastrechte",
-          "recommendation": "borderline",
+          "recommendation": "accept_if_verified",
           "suitability": "good_candidate_if_documented",
           "must": [
             "Konkreter bezifferbarer Zahlungsanspruch",
@@ -2163,7 +2313,10 @@
           "success_rate": null,
           "decision_template": "Wir können diesen Fall derzeit nicht übernehmen, weil die erforderlichen Nachweise oder Voraussetzungen noch geprüft werden müssen. Eine individuelle rechtliche Beratung kann sinnvoll sein.",
           "referral_requires_opt_in": true,
-          "review_status": "DRAFT_NOT_LEGALLY_APPROVED"
+          "review_status": "DRAFT_NOT_LEGALLY_APPROVED",
+          "acceptance_rule": "Only after all must criteria and documents are verified, no material objections, and human authorization",
+          "reject_rule": "Reject only when essential conditions are disproven or scope is excluded; otherwise request evidence or human review",
+          "deadline_note": "Check individual limitation periods and statutory deadlines against primary sources"
         },
         {
           "id": "reisen-07",
@@ -2204,7 +2357,10 @@
           "success_rate": null,
           "decision_template": "Wir können diesen Fall derzeit nicht übernehmen, weil die erforderlichen Nachweise oder Voraussetzungen noch geprüft werden müssen. Eine individuelle rechtliche Beratung kann sinnvoll sein.",
           "referral_requires_opt_in": true,
-          "review_status": "DRAFT_NOT_LEGALLY_APPROVED"
+          "review_status": "DRAFT_NOT_LEGALLY_APPROVED",
+          "acceptance_rule": "Only after all must criteria and documents are verified, no material objections, and human authorization",
+          "reject_rule": "Reject only when essential conditions are disproven or scope is excluded; otherwise request evidence or human review",
+          "deadline_note": "Check individual limitation periods and statutory deadlines against primary sources"
         },
         {
           "id": "reisen-08",
@@ -2245,7 +2401,10 @@
           "success_rate": null,
           "decision_template": "Wir können diesen Fall derzeit nicht übernehmen, weil die erforderlichen Nachweise oder Voraussetzungen noch geprüft werden müssen. Eine individuelle rechtliche Beratung kann sinnvoll sein.",
           "referral_requires_opt_in": true,
-          "review_status": "DRAFT_NOT_LEGALLY_APPROVED"
+          "review_status": "DRAFT_NOT_LEGALLY_APPROVED",
+          "acceptance_rule": "Only after all must criteria and documents are verified, no material objections, and human authorization",
+          "reject_rule": "Reject only when essential conditions are disproven or scope is excluded; otherwise request evidence or human review",
+          "deadline_note": "Check individual limitation periods and statutory deadlines against primary sources"
         },
         {
           "id": "reisen-09",
@@ -2286,7 +2445,10 @@
           "success_rate": null,
           "decision_template": "Wir können diesen Fall derzeit nicht übernehmen, weil die erforderlichen Nachweise oder Voraussetzungen noch geprüft werden müssen. Eine individuelle rechtliche Beratung kann sinnvoll sein.",
           "referral_requires_opt_in": true,
-          "review_status": "DRAFT_NOT_LEGALLY_APPROVED"
+          "review_status": "DRAFT_NOT_LEGALLY_APPROVED",
+          "acceptance_rule": "Only after all must criteria and documents are verified, no material objections, and human authorization",
+          "reject_rule": "Reject only when essential conditions are disproven or scope is excluded; otherwise request evidence or human review",
+          "deadline_note": "Check individual limitation periods and statutory deadlines against primary sources"
         }
       ]
     },
@@ -2303,7 +2465,7 @@
         {
           "id": "hotel-unterkunft-01",
           "title": "Zugesagte Storno-Erstattung",
-          "recommendation": "borderline",
+          "recommendation": "accept_if_verified",
           "suitability": "good_candidate_if_documented",
           "must": [
             "Konkreter bezifferbarer Zahlungsanspruch",
@@ -2339,12 +2501,15 @@
           "success_rate": null,
           "decision_template": "Wir können diesen Fall derzeit nicht übernehmen, weil die erforderlichen Nachweise oder Voraussetzungen noch geprüft werden müssen. Eine individuelle rechtliche Beratung kann sinnvoll sein.",
           "referral_requires_opt_in": true,
-          "review_status": "DRAFT_NOT_LEGALLY_APPROVED"
+          "review_status": "DRAFT_NOT_LEGALLY_APPROVED",
+          "acceptance_rule": "Only after all must criteria and documents are verified, no material objections, and human authorization",
+          "reject_rule": "Reject only when essential conditions are disproven or scope is excluded; otherwise request evidence or human review",
+          "deadline_note": "Check individual limitation periods and statutory deadlines against primary sources"
         },
         {
           "id": "hotel-unterkunft-02",
           "title": "Doppelte Abbuchung",
-          "recommendation": "borderline",
+          "recommendation": "accept_if_verified",
           "suitability": "good_candidate_if_documented",
           "must": [
             "Konkreter bezifferbarer Zahlungsanspruch",
@@ -2380,12 +2545,15 @@
           "success_rate": null,
           "decision_template": "Wir können diesen Fall derzeit nicht übernehmen, weil die erforderlichen Nachweise oder Voraussetzungen noch geprüft werden müssen. Eine individuelle rechtliche Beratung kann sinnvoll sein.",
           "referral_requires_opt_in": true,
-          "review_status": "DRAFT_NOT_LEGALLY_APPROVED"
+          "review_status": "DRAFT_NOT_LEGALLY_APPROVED",
+          "acceptance_rule": "Only after all must criteria and documents are verified, no material objections, and human authorization",
+          "reject_rule": "Reject only when essential conditions are disproven or scope is excluded; otherwise request evidence or human review",
+          "deadline_note": "Check individual limitation periods and statutory deadlines against primary sources"
         },
         {
           "id": "hotel-unterkunft-03",
           "title": "Kaution nicht zurück",
-          "recommendation": "borderline",
+          "recommendation": "accept_if_verified",
           "suitability": "good_candidate_if_documented",
           "must": [
             "Konkreter bezifferbarer Zahlungsanspruch",
@@ -2421,12 +2589,15 @@
           "success_rate": null,
           "decision_template": "Wir können diesen Fall derzeit nicht übernehmen, weil die erforderlichen Nachweise oder Voraussetzungen noch geprüft werden müssen. Eine individuelle rechtliche Beratung kann sinnvoll sein.",
           "referral_requires_opt_in": true,
-          "review_status": "DRAFT_NOT_LEGALLY_APPROVED"
+          "review_status": "DRAFT_NOT_LEGALLY_APPROVED",
+          "acceptance_rule": "Only after all must criteria and documents are verified, no material objections, and human authorization",
+          "reject_rule": "Reject only when essential conditions are disproven or scope is excluded; otherwise request evidence or human review",
+          "deadline_note": "Check individual limitation periods and statutory deadlines against primary sources"
         },
         {
           "id": "hotel-unterkunft-04",
           "title": "Nicht bereitgestellte Unterkunft",
-          "recommendation": "borderline",
+          "recommendation": "accept_if_verified",
           "suitability": "good_candidate_if_documented",
           "must": [
             "Konkreter bezifferbarer Zahlungsanspruch",
@@ -2462,12 +2633,15 @@
           "success_rate": null,
           "decision_template": "Wir können diesen Fall derzeit nicht übernehmen, weil die erforderlichen Nachweise oder Voraussetzungen noch geprüft werden müssen. Eine individuelle rechtliche Beratung kann sinnvoll sein.",
           "referral_requires_opt_in": true,
-          "review_status": "DRAFT_NOT_LEGALLY_APPROVED"
+          "review_status": "DRAFT_NOT_LEGALLY_APPROVED",
+          "acceptance_rule": "Only after all must criteria and documents are verified, no material objections, and human authorization",
+          "reject_rule": "Reject only when essential conditions are disproven or scope is excluded; otherwise request evidence or human review",
+          "deadline_note": "Check individual limitation periods and statutory deadlines against primary sources"
         },
         {
           "id": "hotel-unterkunft-05",
           "title": "Bestätigte Preiskorrektur",
-          "recommendation": "borderline",
+          "recommendation": "accept_if_verified",
           "suitability": "good_candidate_if_documented",
           "must": [
             "Konkreter bezifferbarer Zahlungsanspruch",
@@ -2503,12 +2677,15 @@
           "success_rate": null,
           "decision_template": "Wir können diesen Fall derzeit nicht übernehmen, weil die erforderlichen Nachweise oder Voraussetzungen noch geprüft werden müssen. Eine individuelle rechtliche Beratung kann sinnvoll sein.",
           "referral_requires_opt_in": true,
-          "review_status": "DRAFT_NOT_LEGALLY_APPROVED"
+          "review_status": "DRAFT_NOT_LEGALLY_APPROVED",
+          "acceptance_rule": "Only after all must criteria and documents are verified, no material objections, and human authorization",
+          "reject_rule": "Reject only when essential conditions are disproven or scope is excluded; otherwise request evidence or human review",
+          "deadline_note": "Check individual limitation periods and statutory deadlines against primary sources"
         },
         {
           "id": "hotel-unterkunft-06",
           "title": "Fehlerhafte Endabrechnung",
-          "recommendation": "borderline",
+          "recommendation": "accept_if_verified",
           "suitability": "good_candidate_if_documented",
           "must": [
             "Konkreter bezifferbarer Zahlungsanspruch",
@@ -2544,7 +2721,10 @@
           "success_rate": null,
           "decision_template": "Wir können diesen Fall derzeit nicht übernehmen, weil die erforderlichen Nachweise oder Voraussetzungen noch geprüft werden müssen. Eine individuelle rechtliche Beratung kann sinnvoll sein.",
           "referral_requires_opt_in": true,
-          "review_status": "DRAFT_NOT_LEGALLY_APPROVED"
+          "review_status": "DRAFT_NOT_LEGALLY_APPROVED",
+          "acceptance_rule": "Only after all must criteria and documents are verified, no material objections, and human authorization",
+          "reject_rule": "Reject only when essential conditions are disproven or scope is excluded; otherwise request evidence or human review",
+          "deadline_note": "Check individual limitation periods and statutory deadlines against primary sources"
         },
         {
           "id": "hotel-unterkunft-07",
@@ -2585,7 +2765,10 @@
           "success_rate": null,
           "decision_template": "Wir können diesen Fall derzeit nicht übernehmen, weil die erforderlichen Nachweise oder Voraussetzungen noch geprüft werden müssen. Eine individuelle rechtliche Beratung kann sinnvoll sein.",
           "referral_requires_opt_in": true,
-          "review_status": "DRAFT_NOT_LEGALLY_APPROVED"
+          "review_status": "DRAFT_NOT_LEGALLY_APPROVED",
+          "acceptance_rule": "Only after all must criteria and documents are verified, no material objections, and human authorization",
+          "reject_rule": "Reject only when essential conditions are disproven or scope is excluded; otherwise request evidence or human review",
+          "deadline_note": "Check individual limitation periods and statutory deadlines against primary sources"
         },
         {
           "id": "hotel-unterkunft-08",
@@ -2626,7 +2809,10 @@
           "success_rate": null,
           "decision_template": "Wir können diesen Fall derzeit nicht übernehmen, weil die erforderlichen Nachweise oder Voraussetzungen noch geprüft werden müssen. Eine individuelle rechtliche Beratung kann sinnvoll sein.",
           "referral_requires_opt_in": true,
-          "review_status": "DRAFT_NOT_LEGALLY_APPROVED"
+          "review_status": "DRAFT_NOT_LEGALLY_APPROVED",
+          "acceptance_rule": "Only after all must criteria and documents are verified, no material objections, and human authorization",
+          "reject_rule": "Reject only when essential conditions are disproven or scope is excluded; otherwise request evidence or human review",
+          "deadline_note": "Check individual limitation periods and statutory deadlines against primary sources"
         },
         {
           "id": "hotel-unterkunft-09",
@@ -2667,7 +2853,10 @@
           "success_rate": null,
           "decision_template": "Wir können diesen Fall derzeit nicht übernehmen, weil die erforderlichen Nachweise oder Voraussetzungen noch geprüft werden müssen. Eine individuelle rechtliche Beratung kann sinnvoll sein.",
           "referral_requires_opt_in": true,
-          "review_status": "DRAFT_NOT_LEGALLY_APPROVED"
+          "review_status": "DRAFT_NOT_LEGALLY_APPROVED",
+          "acceptance_rule": "Only after all must criteria and documents are verified, no material objections, and human authorization",
+          "reject_rule": "Reject only when essential conditions are disproven or scope is excluded; otherwise request evidence or human review",
+          "deadline_note": "Check individual limitation periods and statutory deadlines against primary sources"
         }
       ]
     },
@@ -2684,7 +2873,7 @@
         {
           "id": "auto-mobilitaet-01",
           "title": "Doppelte Sharing-Abbuchung",
-          "recommendation": "borderline",
+          "recommendation": "accept_if_verified",
           "suitability": "good_candidate_if_documented",
           "must": [
             "Konkreter bezifferbarer Zahlungsanspruch",
@@ -2720,12 +2909,15 @@
           "success_rate": null,
           "decision_template": "Wir können diesen Fall derzeit nicht übernehmen, weil die erforderlichen Nachweise oder Voraussetzungen noch geprüft werden müssen. Eine individuelle rechtliche Beratung kann sinnvoll sein.",
           "referral_requires_opt_in": true,
-          "review_status": "DRAFT_NOT_LEGALLY_APPROVED"
+          "review_status": "DRAFT_NOT_LEGALLY_APPROVED",
+          "acceptance_rule": "Only after all must criteria and documents are verified, no material objections, and human authorization",
+          "reject_rule": "Reject only when essential conditions are disproven or scope is excluded; otherwise request evidence or human review",
+          "deadline_note": "Check individual limitation periods and statutory deadlines against primary sources"
         },
         {
           "id": "auto-mobilitaet-02",
           "title": "Mietwagenkaution",
-          "recommendation": "borderline",
+          "recommendation": "accept_if_verified",
           "suitability": "good_candidate_if_documented",
           "must": [
             "Konkreter bezifferbarer Zahlungsanspruch",
@@ -2761,12 +2953,15 @@
           "success_rate": null,
           "decision_template": "Wir können diesen Fall derzeit nicht übernehmen, weil die erforderlichen Nachweise oder Voraussetzungen noch geprüft werden müssen. Eine individuelle rechtliche Beratung kann sinnvoll sein.",
           "referral_requires_opt_in": true,
-          "review_status": "DRAFT_NOT_LEGALLY_APPROVED"
+          "review_status": "DRAFT_NOT_LEGALLY_APPROVED",
+          "acceptance_rule": "Only after all must criteria and documents are verified, no material objections, and human authorization",
+          "reject_rule": "Reject only when essential conditions are disproven or scope is excluded; otherwise request evidence or human review",
+          "deadline_note": "Check individual limitation periods and statutory deadlines against primary sources"
         },
         {
           "id": "auto-mobilitaet-03",
           "title": "Storno-Erstattung",
-          "recommendation": "borderline",
+          "recommendation": "accept_if_verified",
           "suitability": "good_candidate_if_documented",
           "must": [
             "Konkreter bezifferbarer Zahlungsanspruch",
@@ -2802,12 +2997,15 @@
           "success_rate": null,
           "decision_template": "Wir können diesen Fall derzeit nicht übernehmen, weil die erforderlichen Nachweise oder Voraussetzungen noch geprüft werden müssen. Eine individuelle rechtliche Beratung kann sinnvoll sein.",
           "referral_requires_opt_in": true,
-          "review_status": "DRAFT_NOT_LEGALLY_APPROVED"
+          "review_status": "DRAFT_NOT_LEGALLY_APPROVED",
+          "acceptance_rule": "Only after all must criteria and documents are verified, no material objections, and human authorization",
+          "reject_rule": "Reject only when essential conditions are disproven or scope is excluded; otherwise request evidence or human review",
+          "deadline_note": "Check individual limitation periods and statutory deadlines against primary sources"
         },
         {
           "id": "auto-mobilitaet-04",
           "title": "Nicht bestellte Zusatzversicherung",
-          "recommendation": "borderline",
+          "recommendation": "accept_if_verified",
           "suitability": "good_candidate_if_documented",
           "must": [
             "Konkreter bezifferbarer Zahlungsanspruch",
@@ -2843,12 +3041,15 @@
           "success_rate": null,
           "decision_template": "Wir können diesen Fall derzeit nicht übernehmen, weil die erforderlichen Nachweise oder Voraussetzungen noch geprüft werden müssen. Eine individuelle rechtliche Beratung kann sinnvoll sein.",
           "referral_requires_opt_in": true,
-          "review_status": "DRAFT_NOT_LEGALLY_APPROVED"
+          "review_status": "DRAFT_NOT_LEGALLY_APPROVED",
+          "acceptance_rule": "Only after all must criteria and documents are verified, no material objections, and human authorization",
+          "reject_rule": "Reject only when essential conditions are disproven or scope is excluded; otherwise request evidence or human review",
+          "deadline_note": "Check individual limitation periods and statutory deadlines against primary sources"
         },
         {
           "id": "auto-mobilitaet-05",
           "title": "Falsche Endabrechnung",
-          "recommendation": "borderline",
+          "recommendation": "accept_if_verified",
           "suitability": "good_candidate_if_documented",
           "must": [
             "Konkreter bezifferbarer Zahlungsanspruch",
@@ -2884,12 +3085,15 @@
           "success_rate": null,
           "decision_template": "Wir können diesen Fall derzeit nicht übernehmen, weil die erforderlichen Nachweise oder Voraussetzungen noch geprüft werden müssen. Eine individuelle rechtliche Beratung kann sinnvoll sein.",
           "referral_requires_opt_in": true,
-          "review_status": "DRAFT_NOT_LEGALLY_APPROVED"
+          "review_status": "DRAFT_NOT_LEGALLY_APPROVED",
+          "acceptance_rule": "Only after all must criteria and documents are verified, no material objections, and human authorization",
+          "reject_rule": "Reject only when essential conditions are disproven or scope is excluded; otherwise request evidence or human review",
+          "deadline_note": "Check individual limitation periods and statutory deadlines against primary sources"
         },
         {
           "id": "auto-mobilitaet-06",
           "title": "Überhöhte Parkgebühr",
-          "recommendation": "borderline",
+          "recommendation": "accept_if_verified",
           "suitability": "good_candidate_if_documented",
           "must": [
             "Konkreter bezifferbarer Zahlungsanspruch",
@@ -2925,7 +3129,10 @@
           "success_rate": null,
           "decision_template": "Wir können diesen Fall derzeit nicht übernehmen, weil die erforderlichen Nachweise oder Voraussetzungen noch geprüft werden müssen. Eine individuelle rechtliche Beratung kann sinnvoll sein.",
           "referral_requires_opt_in": true,
-          "review_status": "DRAFT_NOT_LEGALLY_APPROVED"
+          "review_status": "DRAFT_NOT_LEGALLY_APPROVED",
+          "acceptance_rule": "Only after all must criteria and documents are verified, no material objections, and human authorization",
+          "reject_rule": "Reject only when essential conditions are disproven or scope is excluded; otherwise request evidence or human review",
+          "deadline_note": "Check individual limitation periods and statutory deadlines against primary sources"
         },
         {
           "id": "auto-mobilitaet-07",
@@ -2966,7 +3173,10 @@
           "success_rate": null,
           "decision_template": "Wir können diesen Fall derzeit nicht übernehmen, weil die erforderlichen Nachweise oder Voraussetzungen noch geprüft werden müssen. Eine individuelle rechtliche Beratung kann sinnvoll sein.",
           "referral_requires_opt_in": true,
-          "review_status": "DRAFT_NOT_LEGALLY_APPROVED"
+          "review_status": "DRAFT_NOT_LEGALLY_APPROVED",
+          "acceptance_rule": "Only after all must criteria and documents are verified, no material objections, and human authorization",
+          "reject_rule": "Reject only when essential conditions are disproven or scope is excluded; otherwise request evidence or human review",
+          "deadline_note": "Check individual limitation periods and statutory deadlines against primary sources"
         },
         {
           "id": "auto-mobilitaet-08",
@@ -3007,7 +3217,10 @@
           "success_rate": null,
           "decision_template": "Wir können diesen Fall derzeit nicht übernehmen, weil die erforderlichen Nachweise oder Voraussetzungen noch geprüft werden müssen. Eine individuelle rechtliche Beratung kann sinnvoll sein.",
           "referral_requires_opt_in": true,
-          "review_status": "DRAFT_NOT_LEGALLY_APPROVED"
+          "review_status": "DRAFT_NOT_LEGALLY_APPROVED",
+          "acceptance_rule": "Only after all must criteria and documents are verified, no material objections, and human authorization",
+          "reject_rule": "Reject only when essential conditions are disproven or scope is excluded; otherwise request evidence or human review",
+          "deadline_note": "Check individual limitation periods and statutory deadlines against primary sources"
         },
         {
           "id": "auto-mobilitaet-09",
@@ -3048,7 +3261,10 @@
           "success_rate": null,
           "decision_template": "Wir können diesen Fall derzeit nicht übernehmen, weil die erforderlichen Nachweise oder Voraussetzungen noch geprüft werden müssen. Eine individuelle rechtliche Beratung kann sinnvoll sein.",
           "referral_requires_opt_in": true,
-          "review_status": "DRAFT_NOT_LEGALLY_APPROVED"
+          "review_status": "DRAFT_NOT_LEGALLY_APPROVED",
+          "acceptance_rule": "Only after all must criteria and documents are verified, no material objections, and human authorization",
+          "reject_rule": "Reject only when essential conditions are disproven or scope is excluded; otherwise request evidence or human review",
+          "deadline_note": "Check individual limitation periods and statutory deadlines against primary sources"
         }
       ]
     }
