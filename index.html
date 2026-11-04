@@ -152,6 +152,18 @@ body{background:#fffaf2;color:#183149}
 .hero-art{width:290px!important;max-width:290px!important;aspect-ratio:335/416!important;height:360px!important;border-width:5px!important;border-radius:20px!important;box-shadow:13px 13px 0 #ff811c!important}
 .hero-art .portrait{border-radius:14px!important;object-fit:cover!important}
 @media(max-width:820px){.navinner{min-height:68px!important}.nav .brand-icon{width:34px!important;height:34px!important}.nav .logo{font-size:23px!important}.pricehook{border:0!important;padding-left:0!important}.hero .wrap.hero-grid{grid-template-columns:1fr!important;gap:26px!important}.hero h1{font-size:clamp(43px,8vw,62px)!important}.hero-art{width:min(290px,90%)!important;max-width:290px!important;height:auto!important;margin:0 auto!important}.hero .lead{font-size:16px!important}}
+/* Hero composition correction 2026-11-04: balance proximity and image scale */
+@media(min-width:821px){
+.hero .wrap.hero-grid{max-width:1040px!important;grid-template-columns:minmax(0,1fr) 355px!important;gap:18px!important;align-items:center!important}
+.hero-art{width:355px!important;max-width:355px!important;height:auto!important;aspect-ratio:335/416!important;margin-left:0!important;margin-right:0!important}
+.hero-art .portrait{width:100%!important;height:100%!important;object-fit:cover!important}
+.hero{padding:30px 0 38px!important}
+.hero h1{font-size:clamp(49px,4.4vw,69px)!important}
+}
+@media(min-width:821px) and (max-width:1080px){
+.hero .wrap.hero-grid{max-width:94%!important;grid-template-columns:minmax(0,1fr) 320px!important;gap:18px!important}
+.hero-art{width:320px!important;max-width:320px!important}
+}
 </style>
 <link rel="canonical" href="https://forderbar.de/"><meta property="og:type" content="website"><meta property="og:title" content="Forderbar – Dein Geld zurück. Einfach."><meta property="og:description" content="Ratgeber zu Rückzahlungen, Abos und Rechnungen."><meta property="og:url" content="https://forderbar.de/"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><link rel="apple-touch-icon" href="/assets/forderbar-f.svg"></head>
 <body>
