@@ -48,6 +48,54 @@ body{background:#f4f8fa;color:var(--text)}
 .field input:focus,.field select:focus,.field textarea:focus{outline:2px solid #2b91aa;outline-offset:1px}
 :focus-visible{outline:3px solid #e98a4c;outline-offset:3px}
 @media(prefers-reduced-motion:reduce){.btn{transition:none}.btn:hover{transform:none}}
+/* High-contrast campaign layout — unmistakable color and clear single-column reading path */
+:root{--forest:#102f49;--forest2:#006d86;--cream:#fffaf2;--sand:#ffe3b8;--orange:#ff7043;--text:#183149;--muted:#425e70;--line:#d4e2e8;--sage:#c9f3e8}
+body{background:#fffaf2;color:#183149}
+.nav{background:#fffdf8;border-bottom:2px solid #153f5d}
+.navinner{min-height:70px}
+.logo{color:#103b5a}.logo span{color:#ff613f}
+.pricehook{color:#0c637a}
+.links a{color:#163b56}
+.btn{background:#ff6c42;color:#142b3e;border-radius:8px;box-shadow:0 8px 0 #d64b2e18;font-weight:800}
+.btn:hover{background:#ff805a}
+.btn.secondary{background:#fff;color:#0b4f70;border:2px solid #0b6885}
+.btn.dark{background:#064c68;color:#fff}
+.hero{background:#123d5c!important;padding:48px 0 54px;overflow:visible}
+.hero-grid{grid-template-columns:minmax(0,1fr) minmax(320px,.83fr);gap:48px;align-items:center;max-width:1140px;margin:auto}
+.hero-grid>div:first-child{padding-top:0}
+.hero .eyebrow{color:#7de5d2;font-size:11px;letter-spacing:.15em}
+.hero h1{font-size:clamp(44px,5.2vw,74px);line-height:1.02;color:#fff!important;margin:14px 0 22px;letter-spacing:-.065em}
+.hero h1 em{color:#ffad66!important}
+.hero .lead{font-size:18px;line-height:1.55;color:#e4eff5;max-width:500px}
+.hero .actions{margin:24px 0}
+.hero-note{display:flex;gap:10px;max-width:530px}
+.hero-note span{display:inline-flex;align-items:center;border:1px solid #5686a0;background:#23546f;color:#f2f9fb;padding:7px 10px;border-radius:5px;font-size:11px;font-weight:650}
+.hero-art{display:block;position:relative;min-height:410px;max-height:none;height:450px;border:5px solid #70d6c9;border-radius:16px;background:#e8f2ec!important;box-shadow:18px 18px 0 #ff8358;overflow:hidden}
+.hero-art .portrait{display:block;width:100%;height:100%;max-height:none;object-fit:cover;object-position:center 28%}
+.hero-art:after{background:linear-gradient(transparent,rgba(10,37,55,.23));inset:65% 0 0}
+.float{border-radius:8px;box-shadow:0 8px 22px #092b3c2c}
+.float.top{top:17px;left:16px}.float.bottom{bottom:18px;right:14px}
+.section{padding:66px 0}
+.section h2{color:#103c5b;font-size:clamp(30px,3.4vw,44px)}
+.section.alt{background:#ffd46e!important}
+.section.alt h2{color:#183b55}
+.section.alt .sub{color:#425061}
+.section.alt .card{background:#fffdf6;border:1px solid #e2ac51}
+.section:not(.alt){background:#fffaf2}
+.section:not(.alt) .card:nth-child(4n+1),.partner-grid .card:nth-child(1){background:#c8eaf4;border-color:#9dcfdc}
+.section:not(.alt) .card:nth-child(4n+2),.partner-grid .card:nth-child(2){background:#ffd6c3;border-color:#efac91}
+.section:not(.alt) .card:nth-child(4n+3),.partner-grid .card:nth-child(3){background:#c9f0df;border-color:#a1d8bc}
+.section:not(.alt) .card:nth-child(4n+4){background:#ded4fa;border-color:#c1b0e9}
+.card{border-radius:12px;box-shadow:none}
+.symbol{background:#fff;color:#086c8a}
+.price{background:#c7f0e2;border:2px solid #138d75;border-radius:14px}
+.big{color:#075e64}
+.notice{background:#c7e9f4;border-left:5px solid #097c9a;color:#17485e}
+.pill{background:#ffe0a4;color:#694116}
+.footer{background:#0e3049;border-top:7px solid #ff764b}
+.footer a,.footer p{color:#e1edf3}
+@media(max-width:820px){.hero{padding:34px 0 42px}.hero-grid{grid-template-columns:1fr;gap:22px}.hero h1{font-size:clamp(43px,9vw,64px)}.hero-art{width:100%;height:380px;min-height:380px;max-width:600px;margin:auto}.hero-note{gap:6px}.hero-note span{font-size:10px}.section{padding:48px 0}}
+@media(max-width:480px){.hero-art{height:310px;min-height:310px;box-shadow:9px 9px 0 #ff8358}.hero h1{font-size:43px}.hero .lead{font-size:16px}.hero-note{flex-wrap:wrap}.float{padding:10px 12px;max-width:190px}.float b{font-size:13px}}
 </style>
 <link rel="canonical" href="https://forderbar.de/"><meta property="og:type" content="website"><meta property="og:title" content="Forderbar – Dein Geld zurück. Einfach."><meta property="og:description" content="Ratgeber zu Rückzahlungen, Abos und Rechnungen."><meta property="og:url" content="https://forderbar.de/"></head>
 <body>
