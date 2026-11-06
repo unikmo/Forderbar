@@ -166,8 +166,6 @@ Ich fordere Sie auf, den Betrag bis zum {{frist}} auf folgendes Konto zu zahlen:
 
 Bitte nennen Sie bei der Zahlung das Aktenzeichen {{aktenzeichen}}. Sollten Sie die Forderung bestreiten, teilen Sie mir dies bitte mit Begründung vor Fristablauf mit.
 
-Nach Fristablauf behalte ich mir vor, die Forderung durch einen Inkassodienstleister geltend zu machen. Dadurch entstehende Kosten können Ihnen als Schuldner in Rechnung gestellt werden, soweit gesetzlich zulässig.
-
 Mit freundlichen Grüßen
 {{kunde}}$t$),
 ('INKASSO_DEMAND', 'Zahlungsaufforderung durch Inkassodienstleister, Aktenzeichen {{aktenzeichen}} (ENTWURF)',
