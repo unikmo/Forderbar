@@ -1,0 +1,26 @@
+<!doctype html><html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Kontakt | Forderbar</title><meta name="description" content="Schreib Forderbar über das Kontaktformular – Fragen zur Fallprüfung, Partnerschaften und Datenschutz."><link rel="canonical" href="https://forderbar.de/kontakt/"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><link rel="stylesheet" href="/assets/legal.css"></head><body><header class="top"><a class="brand" href="/" aria-label="Forderbar Startseite"><img src="/assets/forderbar-f.svg" alt="" width="32" height="32"><span>forderbar<b>.</b></span></a><nav><a href="/#so-funktionierts">So funktioniert’s</a><a href="/ratgeber/">Ratgeber</a><a href="/kontakt/">Kontakt</a></nav></header><main>
+<h1>Kontakt</h1>
+<p class="lead">Du hast eine Frage zu Forderbar, zur kostenlosen Fallprüfung oder zu einer Partnerschaft? Schreib uns – wir antworten in der Regel innerhalb von zwei Werktagen.</p>
+<form id="contactForm" class="card" novalidate>
+  <label for="cName">Name</label>
+  <input id="cName" name="name" autocomplete="name" required maxlength="120">
+  <label for="cMail">E-Mail-Adresse</label>
+  <input id="cMail" name="email" type="email" autocomplete="email" required maxlength="200">
+  <label for="cTopic">Worum geht es?</label>
+  <select id="cTopic" name="topic">
+    <option>Frage zur Fallprüfung</option>
+    <option>Partnerschaft (Beratungsstelle, Verein, Verbraucherzentrale)</option>
+    <option>Datenschutz / Auskunft / Löschung</option>
+    <option>Presse</option>
+    <option>Sonstiges</option>
+  </select>
+  <label for="cMsg">Deine Nachricht</label>
+  <textarea id="cMsg" name="message" rows="7" required minlength="10" maxlength="5000"></textarea>
+  <p class="hint">Bitte schick uns hier <strong>keine Ausweise, Verträge oder Kontoauszüge</strong>. Wenn wir Unterlagen brauchen, sagen wir dir, wie du sie sicher übermittelst.</p>
+  <div class="hp" aria-hidden="true"><label>Bitte leer lassen<input name="website" tabindex="-1" autocomplete="off"></label></div>
+  <label class="check"><input id="cConsent" type="checkbox" required> <span>Ich habe die <a href="/datenschutz/" target="_blank" rel="noopener">Datenschutzerklärung</a> gelesen. Meine Angaben werden zur Bearbeitung meiner Anfrage verwendet.</span></label>
+  <button type="submit" id="cSend">Nachricht senden</button>
+  <p id="cStatus" role="status" aria-live="polite"></p>
+</form>
+<p class="meta">Du erreichst uns auch per E-Mail: <a href="mailto:hello@forderbar.de">hello@forderbar.de</a>. Anschrift und weitere Angaben findest du im <a href="/impressum/">Impressum</a>.</p>
+<script src="/assets/contact-form.js" defer></script></main><footer class="bottom"><div><strong>forderbar.</strong><p>Geld zurück von Unternehmen.</p></div><nav aria-label="Rechtliches"><a href="/impressum/">Impressum</a><a href="/datenschutz/">Datenschutz</a><a href="/agb/">AGB</a><a href="/cookies/">Cookies</a><a href="/kontakt/">Kontakt</a></nav></footer></body></html>
