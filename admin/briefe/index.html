@@ -1,0 +1,135 @@
+<!doctype html><html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>Schreiben | Forderbar intern</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#edf3f6;color:#182b3a;font:14px/1.5 Inter,"Segoe UI",Arial,sans-serif}
+header{background:#142f44;color:#fff;padding:14px 24px;border-bottom:3px solid #20a8a3;display:flex;justify-content:space-between;align-items:center}
+header a{color:#c9e9ed;text-decoration:none;font-size:13px;margin-left:16px}main{max-width:1180px;margin:auto;padding:20px 24px 70px}
+section{background:#fff;border:1px solid #d7e5ec;border-radius:12px;padding:20px;margin:16px 0}
+h1{font-size:22px;margin:0}h2{font-size:17px;margin:0 0 12px}
+label{display:block;font-weight:650;margin:10px 0 4px}input,select,textarea{width:100%;padding:9px;border:1px solid #aabcc6;border-radius:8px;font:inherit;background:#fff}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:0 16px}
+button{background:#0b6f8a;color:#fff;border:0;border-radius:8px;padding:9px 16px;font:inherit;font-weight:650;cursor:pointer;margin:10px 8px 0 0}
+button.sec{background:#fff;color:#0b6f8a;border:1px solid #0b6f8a}button.dng{background:#b3261e}button:disabled{opacity:.5;cursor:not-allowed}
+.hidden{display:none}.muted{color:#536d7b}.msg{margin-top:10px;font-weight:650}.err{color:#b3261e}.ok{color:#0b6f4a}
+table{border-collapse:collapse;width:100%}th,td{border-bottom:1px solid #e1ebf0;padding:8px;text-align:left;vertical-align:top}th{background:#eaf2f6}
+pre{white-space:pre-wrap;background:#f4f8fa;border:1px solid #d7e5ec;border-radius:8px;padding:12px;margin:8px 0;max-height:260px;overflow:auto}
+.pill{display:inline-block;border-radius:999px;padding:1px 10px;font-size:12px;font-weight:700;background:#e6f3f1;color:#0b5f56}
+.warn{background:#fff6e0;border:1px solid #f0d28a;border-radius:10px;padding:12px 16px}
+</style></head><body>
+<header><strong>Forderbar intern · Schreiben an Gegenparteien</strong><span><a href="/admin/">Geschäftssteuerung</a><a href="#" id="logout" class="hidden">Abmelden</a></span></header>
+<main>
+<section id="login"><h2>Anmelden</h2><p class="muted">Nur für freigeschaltete Mitarbeitende. Du bekommst einen Anmeldelink per E-Mail.</p>
+<form id="loginform"><label for="email">E-Mail-Adresse</label><input id="email" type="email" required autocomplete="email" style="max-width:380px"><button type="submit">Anmeldelink senden</button><p id="loginmsg" class="msg"></p></form></section>
+
+<div id="app" class="hidden">
+<div id="flag" class="warn"></div>
+
+<section><h2>1. Neues Schreiben entwerfen</h2>
+<p class="muted">Der Text kommt aus der rechtlich freigegebenen Vorlage. Danach muss der Kunde das Schreiben freigeben, dann gibst du es zum Versand frei.</p>
+<div class="grid">
+<div><label for="fCase">Fall (angenommen, mit aktivem Auftrag)</label><select id="fCase"></select></div>
+<div><label for="fKind">Art</label><select id="fKind"><option value="INITIAL_DEMAND">Erste Zahlungsaufforderung</option><option value="REMINDER">Erinnerung</option></select></div>
+<div><label for="fChannel">Versandweg</label><select id="fChannel"><option value="EMAIL">E-Mail (automatisch)</option><option value="POST">Post (manuell)</option><option value="FAX">Fax (manuell)</option></select></div>
+<div><label for="fDeadline">Zahlungsfrist (mind. 14 Tage)</label><input id="fDeadline" type="date"></div>
+<div><label for="fCustomer">Name des Kunden</label><input id="fCustomer" maxlength="160"></div>
+<div><label for="fRecipient">Gegenpartei (Name)</label><input id="fRecipient" maxlength="200"></div>
+<div><label for="fEmail">E-Mail der Gegenpartei</label><input id="fEmail" type="email" maxlength="200"></div>
+<div><label for="fAddress">Postanschrift der Gegenpartei</label><textarea id="fAddress" rows="2" maxlength="400"></textarea></div>
+</div>
+<label for="fPay">Zahlungsangaben (Konto, Verwendungszweck)</label><textarea id="fPay" rows="3" maxlength="500"></textarea>
+<button id="fCreate">Entwurf erstellen</button><p id="fMsg" class="msg" role="status"></p></section>
+
+<section><h2>2. Schreiben</h2>
+<button class="sec" id="reload">Neu laden</button>
+<button id="sendMail" class="sec">Freigegebene E-Mails jetzt senden</button><span id="sendMsg" class="msg"></span>
+<div style="overflow-x:auto"><table><thead><tr><th>Stand</th><th>Fall</th><th>An</th><th>Weg</th><th>Betreff</th><th>Aktionen</th></tr></thead><tbody id="rows"></tbody></table></div>
+<div id="detail"></div></section>
+</div></main>
+
+<script src="/assets/vendor/supabase.min.js"></script>
+<script>
+const SB_URL='https://gyapckgyqxqcquxuhunz.supabase.co',SB_KEY='sb_publishable_5qaJkw9dQtYhcQBHF_JDVQ_BgTTFCc2';
+const client=window.supabase.createClient(SB_URL,SB_KEY,{auth:{flowType:'pkce',detectSessionInUrl:true}});
+const $=id=>document.getElementById(id);
+const STATUS={PENDING_CUSTOMER_APPROVAL:'wartet auf Kunde',CUSTOMER_APPROVED:'Kunde hat freigegeben',RELEASED:'zum Versand freigegeben',SENT:'versendet',FAILED:'fehlgeschlagen',CANCELLED:'abgebrochen'};
+const CH={EMAIL:'E-Mail',POST:'Post',FAX:'Fax'};
+let cases=[],session=null;
+function el(t,x,c){const e=document.createElement(t);if(x!==undefined)e.textContent=x;if(c)e.className=c;return e}
+function say(id,t,bad){const n=$(id);n.textContent=t;n.className='msg '+(bad?'err':'ok')}
+
+async function boot(){
+  const {data:{session:s}}=await client.auth.getSession();session=s;
+  const signed=!!s;$('login').classList.toggle('hidden',signed);$('logout').classList.toggle('hidden',!signed);$('app').classList.add('hidden');
+  if(!signed)return;
+  const staff=await client.rpc('forderbar_is_staff');
+  if(staff.error||staff.data!==true){$('login').classList.remove('hidden');$('loginform').classList.add('hidden');$('loginmsg').textContent='Dieses Konto ist nicht für den internen Bereich freigeschaltet.';$('loginmsg').className='msg err';return}
+  $('app').classList.remove('hidden');
+  const on=await client.rpc('forderbar_real_cases_enabled');
+  const f=$('flag');f.replaceChildren();
+  if(on.data===true)f.append(el('strong','Echtbetrieb ist AKTIV. '),document.createTextNode('Schreiben werden an echte Gegenparteien gesendet. Jeden Text vorher prüfen.'));
+  else f.append(el('strong','Echtbetrieb ist AUS. '),document.createTextNode('Entwürfe, Freigaben und Versand sind gesperrt, bis die Funktion nach der anwaltlichen Prüfung eingeschaltet wird.'));
+  await load();
+}
+async function load(){
+  const cs=await client.from('cases').select('id,category,amount_cents,paid_cents,debtor_name,status').eq('synthetic',false).eq('status','APPROVED').order('created_at',{ascending:false});
+  cases=cs.data||[];
+  const sel=$('fCase');sel.replaceChildren();
+  if(!cases.length)sel.append(el('option','Keine angenommenen Fälle'));
+  cases.forEach(c=>{const o=el('option',c.id.slice(0,8).toUpperCase()+' · '+c.category+' · '+((c.amount_cents-c.paid_cents)/100).toLocaleString('de-DE',{style:'currency',currency:'EUR'})+' · '+c.debtor_name);o.value=c.id;sel.append(o)});
+  await loadLetters();
+}
+async function loadLetters(){
+  const r=await client.from('demand_letters').select('*').order('created_at',{ascending:false}).limit(100);
+  const body=$('rows');body.replaceChildren();$('detail').replaceChildren();
+  if(r.error){body.append(rowMsg('Konnte nicht geladen werden: '+r.error.message));return}
+  if(!(r.data||[]).length){body.append(rowMsg('Noch keine Schreiben.'));return}
+  r.data.forEach(l=>{
+    const tr=el('tr');
+    const st=el('td');st.append(el('span',STATUS[l.status]||l.status,'pill'));
+    tr.append(st,el('td',l.case_id.slice(0,8).toUpperCase()),el('td',l.recipient_name),el('td',CH[l.channel]),el('td',l.subject));
+    const act=el('td');
+    const view=el('button','Ansehen','sec');view.onclick=()=>show(l);act.append(view);
+    if(l.status==='CUSTOMER_APPROVED'){const b=el('button','Zum Versand freigeben');b.onclick=()=>run('forderbar_staff_release_demand',{p_letter_id:l.id});act.append(b)}
+    if(l.status==='RELEASED'&&l.channel!=='EMAIL'){const b=el('button','Als versendet erfassen');b.onclick=()=>{const n=window.prompt('Nachweis eintragen (z. B. Sendungsnummer, Datum, Faxprotokoll):');if(n)run('forderbar_staff_mark_demand_sent_manually',{p_letter_id:l.id,p_note:n})};act.append(b)}
+    if(['PENDING_CUSTOMER_APPROVAL','CUSTOMER_APPROVED','RELEASED'].includes(l.status)){const b=el('button','Abbrechen','dng');b.onclick=()=>{const n=window.prompt('Grund für den Abbruch:');if(n)run('forderbar_staff_cancel_demand',{p_letter_id:l.id,p_reason:n})};act.append(b)}
+    tr.append(act);body.append(tr);
+  });
+}
+function rowMsg(t){const tr=el('tr');const td=el('td',t,'muted');td.colSpan=6;tr.append(td);return tr}
+function show(l){
+  const d=$('detail');d.replaceChildren();
+  d.append(el('h2','Schreiben ansehen'),el('p','An: '+l.recipient_name+(l.recipient_email?' · '+l.recipient_email:'')+(l.recipient_address?' · '+l.recipient_address.replace(/\n/g,', '):'')+' · Frist: '+(l.deadline||'–')),el('pre',l.subject+'\n\n'+l.body));
+  if(l.delivery_proof)d.append(el('p','Versandnachweis:'),el('pre',JSON.stringify(l.delivery_proof,null,2)));
+  if(l.failure_reason)d.append(el('p','Hinweis: '+l.failure_reason,'err'));
+  d.scrollIntoView({behavior:'smooth'});
+}
+async function run(fn,args){
+  const r=await client.rpc(fn,args);
+  if(r.error)window.alert('Das hat nicht geklappt: '+r.error.message);
+  await loadLetters();
+}
+$('fCreate').onclick=async()=>{
+  $('fCreate').disabled=true;
+  const r=await client.rpc('forderbar_staff_create_demand',{
+    p_case_id:$('fCase').value,p_kind:$('fKind').value,p_channel:$('fChannel').value,p_recipient_name:$('fRecipient').value.trim(),
+    p_recipient_address:$('fAddress').value.trim()||null,p_recipient_email:$('fEmail').value.trim()||null,
+    p_customer_name:$('fCustomer').value.trim(),p_deadline:$('fDeadline').value||null,p_payment_details:$('fPay').value.trim()});
+  $('fCreate').disabled=false;
+  if(r.error){say('fMsg','Nicht möglich: '+r.error.message,true);return}
+  say('fMsg','Entwurf erstellt. Der Kunde sieht ihn jetzt in seinem Konto und muss ihn freigeben.');await loadLetters();
+};
+$('sendMail').onclick=async()=>{
+  if(!window.confirm('Alle freigegebenen E-Mail-Schreiben jetzt an die Gegenparteien senden?'))return;
+  $('sendMail').disabled=true;const {data:{session:s}}=await client.auth.getSession();
+  try{const r=await fetch('/api/send-demands',{method:'POST',headers:{Authorization:'Bearer '+s.access_token}});const j=await r.json();
+    say('sendMsg',r.ok?('Gesendet: '+j.sent+' · Fehlgeschlagen: '+j.failed+' · Post/Fax wartet auf manuellen Versand: '+j.waiting_manual_post_fax):('Nicht gesendet: '+(j.error||r.status)),!r.ok)}
+  catch(e){say('sendMsg','Nicht gesendet: '+e.message,true)}
+  $('sendMail').disabled=false;await loadLetters();
+};
+$('reload').onclick=load;
+$('logout').onclick=async e=>{e.preventDefault();await client.auth.signOut();await boot()};
+$('loginform').addEventListener('submit',async e=>{e.preventDefault();
+  $('loginmsg').textContent='Anmeldelink wird angefordert…';$('loginmsg').className='msg';
+  const r=await client.auth.signInWithOtp({email:$('email').value.trim(),options:{shouldCreateUser:false,emailRedirectTo:location.origin+'/admin/briefe/'}});
+  say('loginmsg',r.error?'Anmeldung nicht möglich.':'Falls das Konto freigeschaltet ist, kommt ein Anmeldelink.',!!r.error)});
+client.auth.onAuthStateChange(()=>setTimeout(boot,0));boot();
+</script></body></html>
