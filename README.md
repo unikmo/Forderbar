@@ -15,7 +15,7 @@ AI-assisted consumer-side recovery of clearly documented monetary claims against
 - Professional collection only when current claim, maturity, default, licensing and fee requirements are satisfied.
 - Payment is made by the debtor to an account designated by Forderbar; Forderbar forwards the recovered principal minus its success fee to the consumer, with a statement (see AGB §5). Handling and segregation of third-party funds is subject to legal review. Direct payment to the consumer is the exception and must be reported.
 - Success target: >=80% full recovery among accepted, matured cases, **not a proven performance claim**.
-- Consumer pricing proposal: 0% commission for claims up to €100; 10% of the whole recovered principal for claims above €100 (from €100.01) on success, subject to fee and consumer-law review.
+- Consumer pricing proposal: 0% commission for claims up to €100; 10% of the whole recovered principal for claims above €100 (from €100.01) on success, subject to fee and consumer-law review. Statutory collection costs paid by the debtor are kept by Forderbar in addition to the commission and are not charged to the consumer (AGB §5(4)); lawyer review pending.
 
 ## Initial claim categories
 

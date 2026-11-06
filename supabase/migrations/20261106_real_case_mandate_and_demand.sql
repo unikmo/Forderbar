@@ -69,7 +69,7 @@ Auftrag zur außergerichtlichen Durchsetzung einer Geldforderung
 1. Auftrag. Ich beauftrage Forderbar, die in meinem Fall genannte Geldforderung gegenüber der dort bezeichneten Gegenpartei außergerichtlich geltend zu machen, die Korrespondenz mit der Gegenpartei zu führen und Zahlungseingänge zu überwachen.
 2. Vollmacht. Forderbar darf zu diesem Zweck in meinem Namen Zahlungsaufforderungen und Mitteilungen an die Gegenpartei richten und Zahlungen entgegennehmen. Gerichtliche Schritte und Vergleiche über die Forderung erfolgen nur mit meiner gesonderten Zustimmung.
 3. Freigabe. Jedes Schreiben an die Gegenpartei wird mir vorab angezeigt und erst nach meiner Freigabe versendet.
-4. Vergütung. Es gilt die Vergütung nach den AGB (Erfolgsprovision, keine Provision ohne Erfolg).
+4. Vergütung. Es gilt die Vergütung nach den AGB (Erfolgsprovision, keine Provision ohne Erfolg). Inkasso- und Rechtsverfolgungskosten, die die Gegenpartei gesetzlich erstatten muss und zahlt, stehen zusätzlich Forderbar zu und werden mir nicht in Rechnung gestellt.
 5. Zahlungsfluss. Zahlungen der Gegenpartei gehen an ein von Forderbar benanntes Konto. Forderbar leitet mir den Betrag abzüglich der vereinbarten Provision weiter.
 6. Meine Angaben. Ich versichere, dass meine Angaben und Unterlagen vollständig und wahr sind und dass die Forderung mir zusteht.
 7. Widerruf und Kündigung. Ich kann diesen Auftrag jederzeit in Textform oder im Kundenkonto beenden. Das gesetzliche Widerrufsrecht bleibt unberührt.
