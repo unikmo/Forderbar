@@ -6,8 +6,16 @@
      - the letter has status RELEASED (customer approved + staff released) and an active mandate
    Post and fax letters are NOT sent here; staff send them by hand and record proof in the staff screen.
 
-   Required env: SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY, RESEND_API_KEY, MAIL_FROM
-   Optional env: MAIL_REPLY_TO, CRON_SECRET */
+   Two sender identities:
+     - Stage 1 (kind INITIAL_DEMAND, reveals_forderbar = false): written in the customer's name. Display name is the
+       customer's name, sent from a NEUTRAL address (MAIL_FROM_NEUTRAL), replies to MAIL_REPLY_TO_NEUTRAL.
+       No Forderbar name or address appears in the headers.
+     - Stage 2 (kind INKASSO_DEMAND, reveals_forderbar = true): Forderbar as Inkassodienstleister,
+       sent from MAIL_FROM_FORDERBAR (an address on a verified forderbar.de sending domain).
+
+   Required env: SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY, RESEND_API_KEY
+   Per stage:    MAIL_FROM_NEUTRAL + MAIL_REPLY_TO_NEUTRAL (stage 1), MAIL_FROM_FORDERBAR (+ optional MAIL_REPLY_TO) (stage 2)
+   Optional env: CRON_SECRET */
 const crypto = require('crypto');
 
 const ANON_KEY = 'sb_publishable_5qaJkw9dQtYhcQBHF_JDVQ_BgTTFCc2';
@@ -42,14 +50,26 @@ async function authorised(req) {
   return r.ok && (await r.json()) === true;
 }
 
-async function sendEmail(letter) {
-  const payload = {
-    from: env('MAIL_FROM'),
-    to: [letter.recipient_email],
-    subject: letter.subject,
-    text: letter.body
-  };
-  if (env('MAIL_REPLY_TO')) payload.reply_to = env('MAIL_REPLY_TO');
+function cleanName(n) {
+  // display names go into a mail header: strip anything that could break or inject headers
+  return String(n || '').replace(/[\r\n"<>,;:\\]/g, ' ').replace(/\s+/g, ' ').trim().slice(0, 80);
+}
+
+function senderFor(letter) {
+  if (letter.reveals_forderbar) {
+    const from = env('MAIL_FROM_FORDERBAR');
+    if (!from) return null;
+    return { from: from, reply_to: env('MAIL_REPLY_TO') || undefined };
+  }
+  const addr = env('MAIL_FROM_NEUTRAL'), reply = env('MAIL_REPLY_TO_NEUTRAL');
+  const name = cleanName(letter.customer_name);
+  if (!addr || !reply || !name) return null;
+  return { from: name + ' <' + addr + '>', reply_to: reply };
+}
+
+async function sendEmail(letter, sender) {
+  const payload = { from: sender.from, to: [letter.recipient_email], subject: letter.subject, text: letter.body };
+  if (sender.reply_to) payload.reply_to = sender.reply_to;
   const r = await fetch('https://api.resend.com/emails', {
     method: 'POST',
     headers: {
@@ -68,7 +88,7 @@ module.exports = async function handler(req, res) {
   res.setHeader('Cache-Control', 'no-store');
   if (req.method !== 'POST' && req.method !== 'GET') return res.status(405).json({ error: 'method not allowed' });
   if (env('REAL_CASES_SEND_ENABLED') !== 'true') return res.status(503).json({ error: 'sending disabled (REAL_CASES_SEND_ENABLED)' });
-  for (const n of ['SUPABASE_URL', 'SUPABASE_SERVICE_ROLE_KEY', 'RESEND_API_KEY', 'MAIL_FROM']) {
+  for (const n of ['SUPABASE_URL', 'SUPABASE_SERVICE_ROLE_KEY', 'RESEND_API_KEY']) {
     if (!env(n)) return res.status(500).json({ error: 'missing env ' + n });
   }
   try {
@@ -76,14 +96,16 @@ module.exports = async function handler(req, res) {
     const flag = await sb('/rest/v1/app_flags?key=eq.real_cases_enabled&select=enabled');
     if (!flag || !flag[0] || flag[0].enabled !== true) return res.status(503).json({ error: 'real cases disabled in database' });
 
-    const letters = await sb('/rest/v1/demand_letters?status=eq.RELEASED&channel=eq.EMAIL&select=id,recipient_email,subject,body&order=staff_released_at.asc&limit=20');
+    const letters = await sb('/rest/v1/demand_letters?status=eq.RELEASED&channel=eq.EMAIL&select=id,recipient_email,subject,body,customer_name,reveals_forderbar&order=staff_released_at.asc&limit=20');
     const manual = await sb('/rest/v1/demand_letters?status=eq.RELEASED&channel=in.(POST,FAX)&select=id');
-    const out = { sent: 0, failed: 0, waiting_manual_post_fax: manual.length, errors: [] };
+    const out = { sent: 0, failed: 0, skipped_missing_sender_config: 0, waiting_manual_post_fax: manual.length, errors: [] };
 
     for (const l of letters) {
+      const sender = senderFor(l);
+      if (!sender) { out.skipped_missing_sender_config++; continue; } // stays RELEASED until the sender settings exist
       let ok = false, proof = null, reason = null;
       try {
-        proof = { provider: 'resend', result: await sendEmail(l) };
+        proof = { provider: 'resend', sender: l.reveals_forderbar ? 'forderbar' : 'customer-name', result: await sendEmail(l, sender) };
         ok = true;
       } catch (e) { reason = String(e.message || e).slice(0, 300); }
       await sb('/rest/v1/rpc/forderbar_mark_demand_sent', {

@@ -133,7 +133,7 @@ end $$;
 
 ------------------------------------------------------------------ demand letters
 create table if not exists public.letter_templates (
-  kind text primary key check (kind in ('INITIAL_DEMAND', 'REMINDER')),
+  kind text primary key check (kind in ('INITIAL_DEMAND', 'INKASSO_DEMAND', 'REMINDER')),
   subject text not null,
   body text not null,
   active boolean not null default false,
@@ -144,19 +144,53 @@ create table if not exists public.letter_templates (
 );
 alter table public.letter_templates enable row level security;
 
-insert into public.letter_templates(kind, subject, body) values ('INITIAL_DEMAND', 'Zahlungsaufforderung, Aktenzeichen {{aktenzeichen}} (ENTWURF)',
-$t$ENTWURF – NICHT RECHTLICH GEPRÜFT.
+insert into public.letter_templates(kind, subject, body) values
+('INITIAL_DEMAND', 'Zahlungsaufforderung, Aktenzeichen {{aktenzeichen}} (ENTWURF)',
+$t$ENTWURF – NICHT RECHTLICH GEPRÜFT. Stufe 1: Absender ist der Kunde, Forderbar wird NICHT genannt.
+
+{{kunde}}
+{{kunde_anschrift}}
+
+An {{gegenpartei}}
+
+Zahlungsaufforderung – Aktenzeichen {{aktenzeichen}}
 
 Sehr geehrte Damen und Herren,
 
-wir handeln im Auftrag und mit Vollmacht von {{kunde}}. Unserem Mandanten steht gegen {{gegenpartei}} eine Forderung in Höhe von {{betrag}} zu.
+ich habe gegen Sie eine Forderung in Höhe von {{betrag}}.
 
 Sachverhalt: {{beschreibung}}
 
-Wir fordern Sie auf, den Betrag bis zum {{frist}} auf folgendes Konto zu zahlen:
+Ich fordere Sie auf, den Betrag bis zum {{frist}} auf folgendes Konto zu zahlen:
 {{zahlung}}
 
-Bitte nennen Sie bei der Zahlung das Aktenzeichen {{aktenzeichen}}. Sollten Sie die Forderung bestreiten, teilen Sie uns dies bitte mit Begründung vor Fristablauf mit.
+Bitte nennen Sie bei der Zahlung das Aktenzeichen {{aktenzeichen}}. Sollten Sie die Forderung bestreiten, teilen Sie mir dies bitte mit Begründung vor Fristablauf mit.
+
+Nach Fristablauf behalte ich mir vor, die Forderung durch einen Inkassodienstleister geltend zu machen. Dadurch entstehende Kosten können Ihnen als Schuldner in Rechnung gestellt werden, soweit gesetzlich zulässig.
+
+Mit freundlichen Grüßen
+{{kunde}}$t$),
+('INKASSO_DEMAND', 'Zahlungsaufforderung durch Inkassodienstleister, Aktenzeichen {{aktenzeichen}} (ENTWURF)',
+$t$ENTWURF – NICHT RECHTLICH GEPRÜFT. Stufe 2: Forderbar tritt offen als Inkassodienstleister auf.
+
+Forderbar
+[Pflichtangaben nach RDG/DL-InfoV: Name, Anschrift, Registrierung im Rechtsdienstleistungsregister, Berufshaftpflicht – vom Anwalt festlegen]
+
+An {{gegenpartei}}
+
+Aktenzeichen {{aktenzeichen}}
+
+Sehr geehrte Damen und Herren,
+
+wir zeigen an, dass wir von {{kunde}} als Inkassodienstleister beauftragt sind, die folgende Forderung geltend zu machen. Eine Vollmacht liegt vor.
+
+Forderung: {{betrag}}
+Sachverhalt: {{beschreibung}}
+
+Eine frühere Zahlungsaufforderung ist ohne Zahlung geblieben. Wir fordern Sie auf, den Betrag bis zum {{frist}} auf folgendes Konto zu zahlen:
+{{zahlung}}
+
+[Hinweise zu Verzug, Inkassokosten und Datenschutz – vom Anwalt festlegen]
 
 Mit freundlichen Grüßen
 Forderbar$t$)
@@ -166,11 +200,13 @@ create table if not exists public.demand_letters (
   id uuid primary key default gen_random_uuid(),
   case_id uuid not null references public.cases(id),
   mandate_id uuid not null references public.mandates(id),
-  kind text not null check (kind in ('INITIAL_DEMAND', 'REMINDER')),
+  kind text not null check (kind in ('INITIAL_DEMAND', 'INKASSO_DEMAND', 'REMINDER')),
   channel text not null check (channel in ('EMAIL', 'POST', 'FAX')),
   recipient_name text not null,
   recipient_address text,
   recipient_email text,
+  customer_name text not null,
+  reveals_forderbar boolean not null default false,
   subject text not null,
   body text not null,
   deadline date,
@@ -202,9 +238,10 @@ create policy demand_letters_staff_select on public.demand_letters for select to
 -- Staff drafts a letter from the approved template. The customer must approve it before anything is released.
 create or replace function public.forderbar_staff_create_demand(
   p_case_id uuid, p_kind text, p_channel text, p_recipient_name text, p_recipient_address text,
-  p_recipient_email text, p_customer_name text, p_deadline date, p_payment_details text)
+  p_recipient_email text, p_customer_name text, p_customer_address text, p_deadline date,
+  p_payment_details text, p_prior_demand_note text)
 returns uuid language plpgsql security definer set search_path = public, pg_temp as $$
-declare c public.cases; m public.mandates; t public.letter_templates; b text; s text; amount text; l uuid;
+declare c public.cases; m public.mandates; t public.letter_templates; b text; s text; amount text; l uuid; reveal boolean;
 begin
   if not public.forderbar_is_staff() then raise exception 'Staff only'; end if;
   if not public.forderbar_real_cases_enabled() then raise exception 'Real cases are not enabled'; end if;
@@ -216,9 +253,24 @@ begin
   if not found then raise exception 'Letter template not approved'; end if;
   if p_deadline is null or p_deadline < current_date + 14 then raise exception 'Deadline must be at least 14 days ahead'; end if;
   if coalesce(trim(p_payment_details), '') = '' or coalesce(trim(p_customer_name), '') = '' then raise exception 'Customer name and payment details required'; end if;
+  if c.amount_cents - c.paid_cents <= 0 then raise exception 'Nothing outstanding'; end if;
+  reveal := (p_kind = 'INKASSO_DEMAND');
+  if p_kind = 'INITIAL_DEMAND' then
+    -- Stage 1 is written in the customer's name: needs the customer's sender address, and only one per case.
+    if coalesce(trim(p_customer_address), '') = '' then raise exception 'Customer address required for a letter in the customer''s name'; end if;
+    if exists (select 1 from public.demand_letters where case_id = p_case_id and kind = 'INITIAL_DEMAND' and status in ('PENDING_CUSTOMER_APPROVAL', 'CUSTOMER_APPROVED', 'RELEASED', 'SENT')) then
+      raise exception 'An initial demand already exists for this case'; end if;
+  elsif reveal then
+    -- Stage 2 (Inkasso, Forderbar visible) only after an initial demand went out and its deadline passed,
+    -- or with a documented earlier demand by the customer.
+    if not exists (select 1 from public.demand_letters where case_id = p_case_id and kind = 'INITIAL_DEMAND' and status = 'SENT' and deadline < current_date)
+       and coalesce(trim(p_prior_demand_note), '') = '' then
+      raise exception 'Inkasso letter needs a sent initial demand with expired deadline, or a note documenting the customer''s own earlier demand'; end if;
+  end if;
   amount := replace(to_char((c.amount_cents - c.paid_cents) / 100.0, 'FM9999999990.00'), '.', ',') || ' €';
   b := t.body; s := t.subject;
   b := replace(b, '{{kunde}}', p_customer_name);
+  b := replace(b, '{{kunde_anschrift}}', coalesce(p_customer_address, ''));
   b := replace(b, '{{gegenpartei}}', p_recipient_name);
   b := replace(b, '{{betrag}}', amount);
   b := replace(b, '{{beschreibung}}', c.description);
@@ -226,10 +278,10 @@ begin
   b := replace(b, '{{zahlung}}', p_payment_details);
   b := replace(b, '{{aktenzeichen}}', upper(left(c.id::text, 8)));
   s := replace(s, '{{aktenzeichen}}', upper(left(c.id::text, 8)));
-  insert into public.demand_letters(case_id, mandate_id, kind, channel, recipient_name, recipient_address, recipient_email, subject, body, deadline, created_by)
-  values (p_case_id, m.id, p_kind, p_channel, p_recipient_name, p_recipient_address, p_recipient_email, s, b, p_deadline, auth.uid())
+  insert into public.demand_letters(case_id, mandate_id, kind, channel, recipient_name, recipient_address, recipient_email, customer_name, reveals_forderbar, subject, body, deadline, created_by)
+  values (p_case_id, m.id, p_kind, p_channel, p_recipient_name, p_recipient_address, p_recipient_email, p_customer_name, reveal, s, b, p_deadline, auth.uid())
   returning id into l;
-  perform public.forderbar_log_event(p_case_id, 'DEMAND_DRAFTED', jsonb_build_object('letter_id', l, 'kind', p_kind, 'channel', p_channel));
+  perform public.forderbar_log_event(p_case_id, 'DEMAND_DRAFTED', jsonb_build_object('letter_id', l, 'kind', p_kind, 'channel', p_channel, 'reveals_forderbar', reveal, 'prior_note', p_prior_demand_note));
   return l;
 end $$;
 
@@ -304,7 +356,7 @@ revoke execute on function public.forderbar_is_staff() from public, anon;
 revoke execute on function public.forderbar_get_mandate_template() from public, anon;
 revoke execute on function public.forderbar_accept_mandate(uuid, text, boolean) from public, anon;
 revoke execute on function public.forderbar_revoke_mandate(uuid) from public, anon;
-revoke execute on function public.forderbar_staff_create_demand(uuid, text, text, text, text, text, text, date, text) from public, anon;
+revoke execute on function public.forderbar_staff_create_demand(uuid, text, text, text, text, text, text, text, date, text, text) from public, anon;
 revoke execute on function public.forderbar_customer_approve_demand(uuid, boolean) from public, anon;
 revoke execute on function public.forderbar_customer_reject_demand(uuid) from public, anon;
 revoke execute on function public.forderbar_staff_release_demand(uuid) from public, anon;
@@ -314,7 +366,7 @@ grant execute on function public.forderbar_is_staff() to authenticated;
 grant execute on function public.forderbar_get_mandate_template() to authenticated;
 grant execute on function public.forderbar_accept_mandate(uuid, text, boolean) to authenticated;
 grant execute on function public.forderbar_revoke_mandate(uuid) to authenticated;
-grant execute on function public.forderbar_staff_create_demand(uuid, text, text, text, text, text, text, date, text) to authenticated;
+grant execute on function public.forderbar_staff_create_demand(uuid, text, text, text, text, text, text, text, date, text, text) to authenticated;
 grant execute on function public.forderbar_customer_approve_demand(uuid, boolean) to authenticated;
 grant execute on function public.forderbar_customer_reject_demand(uuid) to authenticated;
 grant execute on function public.forderbar_staff_release_demand(uuid) to authenticated;

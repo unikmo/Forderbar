@@ -27,15 +27,18 @@ pre{white-space:pre-wrap;background:#f4f8fa;border:1px solid #d7e5ec;border-radi
 <p class="muted">Der Text kommt aus der rechtlich freigegebenen Vorlage. Danach muss der Kunde das Schreiben freigeben, dann gibst du es zum Versand frei.</p>
 <div class="grid">
 <div><label for="fCase">Fall (angenommen, mit aktivem Auftrag)</label><select id="fCase"></select></div>
-<div><label for="fKind">Art</label><select id="fKind"><option value="INITIAL_DEMAND">Erste Zahlungsaufforderung</option><option value="REMINDER">Erinnerung</option></select></div>
+<div><label for="fKind">Art</label><select id="fKind"><option value="INITIAL_DEMAND">Stufe 1: Zahlungsaufforderung im Namen des Kunden (ohne Forderbar)</option><option value="INKASSO_DEMAND">Stufe 2: Inkasso-Schreiben (Forderbar tritt offen auf)</option><option value="REMINDER">Erinnerung</option></select></div>
 <div><label for="fChannel">Versandweg</label><select id="fChannel"><option value="EMAIL">E-Mail (automatisch)</option><option value="POST">Post (manuell)</option><option value="FAX">Fax (manuell)</option></select></div>
 <div><label for="fDeadline">Zahlungsfrist (mind. 14 Tage)</label><input id="fDeadline" type="date"></div>
 <div><label for="fCustomer">Name des Kunden</label><input id="fCustomer" maxlength="160"></div>
+<div><label for="fCustAddr">Anschrift des Kunden (Pflicht bei Stufe 1)</label><textarea id="fCustAddr" rows="2" maxlength="400"></textarea></div>
 <div><label for="fRecipient">Gegenpartei (Name)</label><input id="fRecipient" maxlength="200"></div>
 <div><label for="fEmail">E-Mail der Gegenpartei</label><input id="fEmail" type="email" maxlength="200"></div>
 <div><label for="fAddress">Postanschrift der Gegenpartei</label><textarea id="fAddress" rows="2" maxlength="400"></textarea></div>
 </div>
 <label for="fPay">Zahlungsangaben (Konto, Verwendungszweck)</label><textarea id="fPay" rows="3" maxlength="500"></textarea>
+<p class="hint muted" style="margin:6px 0 0">Stufe 1 nennt Forderbar nicht, auch nicht im Absender. Dort darf als Zahlungsziel kein auf Forderbar lautendes Konto stehen. Stufe 2 ist erst nach einer versendeten Stufe 1 mit abgelaufener Frist möglich.</p>
+<label for="fPrior">Nur Stufe 2: Nachweis, falls der Kunde selbst schon gemahnt hat (sonst leer lassen)</label><textarea id="fPrior" rows="2" maxlength="500"></textarea>
 <button id="fCreate">Entwurf erstellen</button><p id="fMsg" class="msg" role="status"></p></section>
 
 <section><h2>2. Schreiben</h2>
@@ -85,7 +88,7 @@ async function loadLetters(){
   r.data.forEach(l=>{
     const tr=el('tr');
     const st=el('td');st.append(el('span',STATUS[l.status]||l.status,'pill'));
-    tr.append(st,el('td',l.case_id.slice(0,8).toUpperCase()),el('td',l.recipient_name),el('td',CH[l.channel]),el('td',l.subject));
+    tr.append(st,el('td',l.case_id.slice(0,8).toUpperCase()),el('td',l.recipient_name),el('td',CH[l.channel]+' · Absender: '+(l.reveals_forderbar?'Forderbar':l.customer_name)),el('td',l.subject));
     const act=el('td');
     const view=el('button','Ansehen','sec');view.onclick=()=>show(l);act.append(view);
     if(l.status==='CUSTOMER_APPROVED'){const b=el('button','Zum Versand freigeben');b.onclick=()=>run('forderbar_staff_release_demand',{p_letter_id:l.id});act.append(b)}
@@ -112,7 +115,7 @@ $('fCreate').onclick=async()=>{
   const r=await client.rpc('forderbar_staff_create_demand',{
     p_case_id:$('fCase').value,p_kind:$('fKind').value,p_channel:$('fChannel').value,p_recipient_name:$('fRecipient').value.trim(),
     p_recipient_address:$('fAddress').value.trim()||null,p_recipient_email:$('fEmail').value.trim()||null,
-    p_customer_name:$('fCustomer').value.trim(),p_deadline:$('fDeadline').value||null,p_payment_details:$('fPay').value.trim()});
+    p_customer_name:$('fCustomer').value.trim(),p_customer_address:$('fCustAddr').value.trim()||null,p_deadline:$('fDeadline').value||null,p_payment_details:$('fPay').value.trim(),p_prior_demand_note:$('fPrior').value.trim()||null});
   $('fCreate').disabled=false;
   if(r.error){say('fMsg','Nicht möglich: '+r.error.message,true);return}
   say('fMsg','Entwurf erstellt. Der Kunde sieht ihn jetzt in seinem Konto und muss ihn freigeben.');await loadLetters();

@@ -12,7 +12,9 @@ Status: drafted, **not applied** to the live database, texts **not legally revie
 ## Flow
 1. Case accepted by Forderbar (`cases.status = 'APPROVED'`, `synthetic = false`).
 2. Customer reads the approved mandate text and accepts it in the account (time, text version, SHA-256 of the text, IP and browser are stored).
-3. Staff drafts a letter from the approved template (`forderbar_staff_create_demand`, deadline at least 14 days out).
+3. Staff drafts a letter from the approved template (`forderbar_staff_create_demand`, deadline at least 14 days out). Two stages:
+   - **Stage 1, `INITIAL_DEMAND`:** written in the customer's name, signed by the customer. Forderbar is not named in the text or the email sender. Payment target must not be a Forderbar-named account.
+   - **Stage 2, `INKASSO_DEMAND`:** Forderbar appears openly as Inkassodienstleister. Only possible after a stage-1 letter was sent and its deadline passed, or with a documented earlier demand by the customer.
 4. Customer reads the letter and approves it (or rejects it).
 5. Staff releases it (`forderbar_staff_release_demand`).
 6. The sending worker (`api/send-demands.js`, email via Resend) sends only `RELEASED` email letters and records proof via `forderbar_mark_demand_sent`. Post and fax letters are sent by hand; staff record the proof in the staff screen.
@@ -26,7 +28,7 @@ Status: drafted, **not applied** to the live database, texts **not legally revie
 ## To go live (after the lawyer signs off)
 1. Review and run the migration in the Supabase SQL editor.
 2. Put the approved texts into `mandate_templates` / `letter_templates`, then set `active = true`, `legal_approved_at = now()`, `legal_approved_by = '<name>'`.
-3. Set Vercel env vars: `SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY`, `RESEND_API_KEY`, `MAIL_FROM` (a verified sender domain), optional `MAIL_REPLY_TO`, `CRON_SECRET`, and finally `REAL_CASES_SEND_ENABLED=true` (second kill switch, independent of the database flag). Never put the service-role key in the repo.
+3. Set Vercel env vars: `SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY`, `RESEND_API_KEY`, `MAIL_FROM_NEUTRAL` + `MAIL_REPLY_TO_NEUTRAL` (stage 1: an address on a neutral, non-Forderbar domain you control and verify in Resend, replies land in a mailbox Forderbar monitors), `MAIL_FROM_FORDERBAR` + optional `MAIL_REPLY_TO` (stage 2: an address on forderbar.de), optional `CRON_SECRET`, and finally `REAL_CASES_SEND_ENABLED=true` (second kill switch, independent of the database flag). Never put the service-role key in the repo.
 4. Build and test the payment flow.
 5. Only then: `update public.app_flags set enabled = true where key = 'real_cases_enabled';`
 
